@@ -1,3 +1,0 @@
-actions
-gotoMyProfile
-	self coreComponent: VIATocMyProfileComponent new

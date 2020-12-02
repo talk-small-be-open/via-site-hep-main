@@ -1,3 +1,0 @@
-icons
-iconMenuHome
-	self iconHome

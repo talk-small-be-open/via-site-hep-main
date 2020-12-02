@@ -1,3 +1,0 @@
-actions
-gotoMyPortfolio
-	self coreComponent: VIATocMyPortfolioComponent new

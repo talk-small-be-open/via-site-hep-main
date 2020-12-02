@@ -1,3 +1,0 @@
-icons
-iconMenuInfo
-	self iconInfo
