@@ -42,16 +42,17 @@
 @t-color-toccamodule2: #85ba6a;
 @t-color-toccamodule3: #5ca9d6;
 @t-color-toccamoduleExtras: @t-color-black;
-@t-color-tandem-player1: #8FC3E1;
-@t-color-tandem-player2: #ABCE99;
-@t-color-tandem-player1-light: #CFE5F2;
-@t-color-tandem-player2-light: #DAEAD3;
+@t-color-tandem-player1: #00eae9;
+@t-color-tandem-player2: #ffa049;
+// @t-color-tandem-player1-light: lighten(@t-color-tandem-player1, 10%);
+// @t-color-tandem-player2-light: lighten(@t-color-tandem-player2, 10%);
 
 @t-color-level-normal: @t-color-blue;
 @t-color-level-intermediate: @t-color-blue;
 @t-color-level-mothertongue: #d48625;
 
 @t-color-vocabolario: #b30061;
+@t-color-palloncini: #009080;
 @t-color-highlight: #ffe100;
 @t-color-text: @t-color-black;
 @t-color-background: #d8cec5;
@@ -111,7 +112,7 @@ span.svg-icon {
 				// height: 1em;
 				width: 100%;
 				height: 100%;
-				stroke: currentcolor;
+				//stroke: currentcolor;
 				fill: currentcolor;
 				//				font-size: 1.25em;
 				// font-size: 1em;
@@ -905,6 +906,33 @@ div.VIATocTaskExerciser {
 						margin: 2em 0;
 				}
 
+
+
+				div.p2pStatus {
+
+						
+						//border: 2px solid green;
+						//				margin: 0.5em;
+//						padding: 0.3em;
+						display: inline-block;
+						// font-size: 60%;
+						color: #eee;
+
+						&.open {
+								//						background-color: grey;
+								color: black;
+						}
+
+						&.data {
+								color: green;
+						}
+
+						&.error {
+								// border: 2px solid red;
+								color: red;
+						}
+				}
+				
 				
 				div.selectOneInput, div.selectPointsInput {
 						margin-bottom: 10px;
@@ -1420,8 +1448,8 @@ div.VIATocTaskExerciser {
 
 						.pairingCode() {
 								border: 2px solid black;
-								padding: 0.5em;
-								font-size: 200%;
+								padding: 0.3em;
+								font-size: 180%;
 						}
 
 						div.pairingStatus {
@@ -1443,6 +1471,7 @@ div.VIATocTaskExerciser {
 										}
 										
 										span.theId {
+												font-family: monospace;
 										}
 								}
 						}
@@ -1451,9 +1480,18 @@ div.VIATocTaskExerciser {
 								div.explanation {
 										margin: 0.5em 0;
 								}
-								input.codeInput {
-										.pairingCode();
-										width: 3em;
+
+								div.codeInputContainer {
+										input.codeInput {
+												.pairingCode();
+												font-family: monospace;
+												width: 3em;
+												margin-right: 1em;
+										}
+
+										.uk-button {
+												font-size: 150%;
+										}
 								}
 						}
 				}
@@ -1463,7 +1501,26 @@ div.VIATocTaskExerciser {
 				div.VIATandemSequenceExerciser {
 
 						@radius: 0.5em;
+						@nonGameCardColor: #ddd;
 
+						.playerLabel(@circleSize) {
+								span.playerLabel {
+										display: inline-block;
+										font-size: 0.7 * @circleSize;
+										background-color: white;
+										width: @circleSize;
+										height: @circleSize;
+										text-align: center;
+										border-radius: 50%;
+										vertical-align: middle;
+										line-height: @circleSize;
+
+										span.playerChar {
+												
+										}
+								}
+						}
+						
 						.ajaxAction {
 								display: contents;
 								cursor: pointer;
@@ -1471,8 +1528,16 @@ div.VIATocTaskExerciser {
 						
 						.card {
 								display: block;
+								position: relative;
 								border-radius: @radius;
-								padding: 0.5em;
+								padding: 1em;
+
+								.uk-button {
+										border-color: black;
+										color: inherit;
+										background-color: transparent;
+										font-weight: bold;
+								}
 						}
 						
 						// .randomCode {
@@ -1488,13 +1553,23 @@ div.VIATocTaskExerciser {
 						// 		}
 						// }
 
+						div.p2pStatus {
+//								display: none;
+								margin: 1em 0;
+								// float: right;
+								// &.error {
+								// 		display: inline-block;
+								// }
+						}
+
+						
 						a.chooser {
 								.card();
-								padding: 0.5em;
+								text-align: center;
 								
+								.playerLabel(4rem);
 								span.playerLabel {
-										float:right;
-										font-size: 200%;
+										margin: 0.2em 0;
 								}
 
 								span.button {
@@ -1505,33 +1580,43 @@ div.VIATocTaskExerciser {
 								.icon {
 										font-size: 1.5em;
 								}
+
+								.button {
+										line-height: 2em;
+								}
 								
 						}
+
+						div.pairer {
+								.card();
+								//background-color: @nonGameCardColor;
+						}
+
 						
 						div.questionAndAnswer {
 								//						padding: 1em;
-								@biggerFont: 130%;
+								@biggerFont: 150%;
 								@padding: 1rem;
-								@iconSize: 2rem;
+								@iconSize: 3rem;
 
-								div.body {
-										padding-top: 0.5em;
-								}
+								// div.body {
+								// 		padding-top: 0.5em;
+								// }
+
+								.playerLabel(2rem);
 
 								div.question {
 										.card();
-
-
-										padding: @padding;
 										//								margin-bottom: 2em;
 										position: relative;
 										z-index: 10;
 
 										span.playerLabel {
-												float:right;
-												font-size: 120%;
-												font-weight: bold;
+												position: absolute;
+												right: 0.5em;
+												top: 0.5em;
 										}
+
 
 										div.explanation {
 												margin-top: 1em;
@@ -1539,7 +1624,7 @@ div.VIATocTaskExerciser {
 										}
 
 										div.questionIcon {
-												font-weight: bold;
+												text-align: center;
 												.icon {
 														font-size: @iconSize;
 														margin-right: 0.1em;
@@ -1553,14 +1638,22 @@ div.VIATocTaskExerciser {
 										position: relative;
 										z-index: 5;
 										top: -1.5 * @radius;
+										margin-bottom: -1.5 * @radius;
 										padding: @padding;
 										padding-top: 2.5 * @radius;
 										margin-top: 0;
-										//								font-size: @biggerFont;
+										//font-size: @biggerFont;
 
+										span.playerLabel {
+												position: absolute;
+												right: 0.5em;
+												top: 1.2em;
+										}
+																		
 
 										div.answerIcon {
-												font-weight: bold;
+												//font-weight: bold;
+												text-align: center;
 												cursor: pointer;
 												.icon {
 														font-size: @iconSize;
@@ -1569,6 +1662,8 @@ div.VIATocTaskExerciser {
 
 										div.correction {
 												margin: 1em 0;
+												display: flex;
+												justify-content: space-evenly;
 										}
 
 								}
@@ -1599,9 +1694,9 @@ div.VIATocTaskExerciser {
 
 						.player1 {
 								background-color: @t-color-tandem-player1;
-								&.question {
-										background-color: @t-color-tandem-player1-light;
-								}
+								// &.question {
+								// 		background-color: @t-color-tandem-player1-light;
+								// }
 								// &.answer  {
 								// 		background-color: @t-color-tandem-player1;
 								// }
@@ -1609,9 +1704,9 @@ div.VIATocTaskExerciser {
 
 						.player2 {
 								background-color: @t-color-tandem-player2;
-								&.question {
-										background-color: @t-color-tandem-player2-light;
-								}
+								// &.question {
+								// 		background-color: @t-color-tandem-player2-light;
+								// }
 								// &.answer {
 								// 		background-color: @t-color-tandem-player2;
 								// }
@@ -1619,20 +1714,46 @@ div.VIATocTaskExerciser {
 
 						div.step2Instructions {
 								.card();
-								background-color: #ddd;
+//								background-color: @nonGameCardColor;
+								text-align: center;
+								.playerLabel(2rem);
+								span.playerLabel {
+										position: absolute;
+										right: 0.5em;
+										top: 0.5em;
+								}
+
+
 						}
 
-						div.summary {
-
-								div.pointsSummary {
+						div.summaryPage {
+								div.summary {
 										.card();
-										.uk-margin-top();
-										.uk-margin-bottom();
-										background-color: #f0f0f0;
-										div.points {
-												font-size: 200%;
-												margin: 1em 0;
+
+										div.pointsSummary {
+												.uk-margin-top();
+												.uk-margin-bottom();
+												//										background-color: #f0f0f0;
+												div.points {
+														font-size: 200%;
+														margin: 1em 0;
+												}
 										}
+
+										div.summaryButtons {
+												display: flex;
+												justify-content: space-evenly;
+
+												.uk-button {
+														line-height: 2em;
+														width: 40%;
+
+														span.icon {
+																width: 3em;
+														}
+												}
+										}
+
 								}
 
 								div.history {
@@ -1640,11 +1761,12 @@ div.VIATocTaskExerciser {
 										.uk-margin-bottom();
 
 										div.question {
-												background-color: #ddd;
+												background-color: @nonGameCardColor;
 										}
 										
 										div.answer {
-												background-color: #eee;
+												background-color: lighten(@nonGameCardColor, 5%);
+												margin-bottom: 1em;
 										}
 								}
 								
@@ -1658,30 +1780,42 @@ div.VIATocTaskExerciser {
 								display: flex;
 								justify-content: space-between;
 								align-items: center;
+								margin-top: 0.5em;
 
 								a {
 										color: inherit;
 								}
 
-								// span.leftRight {
-								// 		width: 15%;
-								// 		a {
-								// 				color: inherit;
-								// 		}
-								// }
+								span.left, span.right {
+										width: 40%;
+										// a {
+										// 		color: inherit;
+										// }
+								}
 
+								span.left {
+										font-size: 1rem;
+								}
+
+								span.right {
+										text-align: right;
+								}
+
+								div.toolbar {
+										display: inline;
+
+										a {
+												margin-left: 0.5em;
+										}
+								}
 								
 						}
 
 						div.toolbar {
-								margin: 1em 0;
+//								font-size: 200%;
+//								margin: 1em 0;
 								
-								div.p2pStatus {
-										margin: 0 0.5em;
-										float: right;
-								}
 						}
-						
 				}
 
 				div.orderItems {
@@ -1724,29 +1858,6 @@ div.VIATocTaskExerciser {
 						}
 				}
 
-				div.p2pStatus {
-
-						
-						border: 2px solid green;
-						//				margin: 0.5em;
-						padding: 0.3em;
-						display: inline-block;
-						font-size: 60%;
-						color: #eee;
-
-						&.open {
-								//						background-color: grey;
-								color: black;
-						}
-
-						&.data {
-								background-color: green;
-						}
-
-						&.error {
-								border: 2px solid red;
-						}
-				}
 		}
 }
 
