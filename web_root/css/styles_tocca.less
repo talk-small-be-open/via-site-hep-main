@@ -1444,56 +1444,56 @@ div.VIATocTaskExerciser {
 				
 				
 
+				// See also via base styles
 				div.VIAUserPairingComponent {
 
-						.pairingCode() {
-								border: 2px solid black;
-								padding: 0.3em;
-								font-size: 180%;
-						}
-
 						div.pairingStatus {
-								margin: 1em 0;
-
 								div.pairingMessage {
-										margin: 1em 0;
 										color: green;
 								}
 						}
+	
+						// .pairingCode() {
+						// 		border: 2px solid black;
+						// 		padding: 0.3em;
+						// 		font-size: 180%;
+						// }
+
+						// div.pairingStatus {
+						// 		margin: 1em 0;
+
+						// 		div.pairingMessage {
+						// 				margin: 1em 0;
+						// 				color: green;
+						// 		}
+						// }
 						
 						&.VIAUserPairingPassiveComponent {
 								div.yourId {
-										.pairingCode();
-										
-										margin: 1em 0;
-
-										span.message {
-										}
-										
 										span.theId {
-												font-family: monospace;
+												background-color: #eee;
 										}
 								}
 						}
 
-						&.VIAUserPairingActiveComponent {
-								div.explanation {
-										margin: 0.5em 0;
-								}
+						// &.VIAUserPairingActiveComponent {
+						// 		div.explanation {
+						// 				margin: 0.5em 0;
+						// 		}
 
-								div.codeInputContainer {
-										input.codeInput {
-												.pairingCode();
-												font-family: monospace;
-												width: 3em;
-												margin-right: 1em;
-										}
+						// 		div.codeInputContainer {
+						// 				input.codeInput {
+						// 						.pairingCode();
+						// 						font-family: monospace;
+						// 						width: 3em;
+						// 						margin-right: 1em;
+						// 				}
 
-										.uk-button {
-												font-size: 150%;
-										}
-								}
-						}
+						// 				.uk-button {
+						// 						font-size: 150%;
+						// 				}
+						// 		}
+						// }
 				}
 				
 				
@@ -1660,10 +1660,19 @@ div.VIATocTaskExerciser {
 												}
 										}
 
-										div.correction {
+										div.interaction {
 												margin: 1em 0;
-												display: flex;
-												justify-content: space-evenly;
+												text-align: center;
+												font-size: 200%;
+
+												div.buttons {
+														display: flex;
+														justify-content: space-evenly;
+
+														div.spinner {
+																display: none;
+														}
+												}
 										}
 
 								}
