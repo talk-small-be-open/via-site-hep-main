@@ -959,15 +959,18 @@ div.VIATocTaskExerciser {
 						.bigButtonStyle(@t-color-blue);
 
 						label.bigButton {
+//								text-align: left;
 								position: relative;
-								padding-left: 2%;
-								padding-right: 2%;
+								padding-left: 1.5em;
+								padding-right: 1.5em;
+
 								.checkedIcon {
 										visibility: hidden;
 										position: absolute;
 										left: 0.3em;
-										
+										z-index: 999;
 								}
+
 								&.active {
 										.checkedIcon {
 												visibility: visible;
@@ -1928,7 +1931,7 @@ div.VIAUnitComponent {
 				// 		font-weight: normal;
 				// }
 		}
-		
+
 }
 
 ul.modulesList {
@@ -1971,6 +1974,16 @@ ul.modulesList {
 						margin-top: 0.2em;
 						color: black;
 						float: right;
+				}
+
+				span.betatesterSign {
+						display: inline-block;
+						margin-left: 0.5em;
+						margin-right: 0.5em;
+						color: green;
+						font-size: 80%;
+						position: relative;
+						top: -0.5em;
 				}
 
 				// span.duration {
