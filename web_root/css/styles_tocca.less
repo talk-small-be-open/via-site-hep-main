@@ -74,7 +74,7 @@
 // @via-coloredbutton-color: #555;
 // @via-coloredbutton-hover-color: darken(@via-coloredbutton-color, 10%);
 @wrongColor: @t-color-red;
-@correctColor: #efe;
+@correctColor: #cfc;
 
 
 // =======================================================================
@@ -984,7 +984,7 @@ div.VIATocTaskExerciser {
 										}
 
 										&.correct {
-												background-color: green;
+												background-color: @correctColor;
 										}
 
 
@@ -1297,7 +1297,7 @@ div.VIATocTaskExerciser {
 
 
 				div.mapPairsClickClick {
-						@pairBorder: 1px solid black;
+						@pairBorder: 2px solid black;
 						
 //						border-top: @pairBorder;
 						display: table;
@@ -1306,17 +1306,18 @@ div.VIATocTaskExerciser {
 
 						div.head {
 								display: table-row;
-								border-bottom: @pairBorder;
+//								border-bottom: @pairBorder;
 								div {
 										display: table-cell;
-										text-align: center;
+										text-align: left;
+										padding-left: 2em;
 										padding-bottom: 5px;
 								}
 						}
 
 						div.objectPair {
 								display: table-row;
-								border-bottom: @pairBorder;
+//								border-bottom: @pairBorder;
 
 								.selection() {
 										&.selected {
@@ -1336,21 +1337,64 @@ div.VIATocTaskExerciser {
 								
 								div.leftObject {
 										display: table-cell;
-										padding-left: 10px;
+										border: @pairBorder;
+										padding: 3px 22px 5px 10px;
 										cursor: pointer;
+										vertical-align: middle;
 										.selection();
 								}
 
-								div.middleColumn {
-										display: table-cell;
-										padding: 0 1em;
-								}
+								// div.middleColumn {
+								// 		display: table-cell;
+								// 		width: 30px;
+								// 		text-align: right;
+								// 		padding: 0;
+								// 		//background-color: black;
+								// }
 
 								div.rightObject {
 										display: table-cell;
-										padding: 5px 10px 5px 10px;
+										border: @pairBorder;
+										padding: 3px 10px 5px 10px;
 										cursor: pointer;
+										position: relative;
+										vertical-align: middle;
 										.selection();
+
+										svg.puzzle {
+												position: absolute;
+												left: -19px;
+												top: calc(50% - 9px);
+												width: 20px;
+												.inlet {
+														fill: white;
+												}
+
+										}
+
+										&.selected {
+												svg.puzzle {
+														.inlet {
+																fill: yellow;
+														}
+												}
+										}
+
+										&:hover {
+												svg.puzzle {
+														.inlet {
+																fill: lightyellow;
+														}
+												}
+										}
+
+										&.correct {
+												svg.puzzle {
+														.inlet {
+																fill: @correctColor;
+														}
+												}
+										}
 
 								}
 
@@ -1375,7 +1419,7 @@ div.VIATocTaskExerciser {
 
 				div.highlightAreas {
 
-						@highlightColor: green;
+						@highlightColor: lighten(@t-color-selection, 20%);
 						
 						.noUserSelect();
 						.noTouch();
@@ -1397,31 +1441,34 @@ div.VIATocTaskExerciser {
 						span.selChar {
 								cursor: url('/images/horizontal-text-select.cur'), text;
 								&.highlighted {
-										background-color: @wrongColor;
-
-										&.touchedNow {
-												background-color: @highlightColor;
-										}
-										
+										background-color: @highlightColor;
 										color: white;
 										padding-top: 1px;
+										cursor: pointer;
+
+										// &.touchedNow {
+										// 		background-color: @highlightColor;
+										// }
+										
 								}
 								&.selected {
+										color: white;
 										background-color: @t-color-selection !important;
 								}
 						}
 
 						span.highlightArea.correct {
 								span.selChar.highlighted {
-										background-color: @highlightColor;
+										color: unset;
+										background-color: @correctColor;
 								}
 						}
 
-						&.firstTake {
-								span.selChar.highlighted {
-										background-color: @highlightColor;		
-								}
-						}
+						// &.firstTake {
+						// 		span.selChar.highlighted {
+						// 				background-color: @highlightColor;		
+						// 		}
+						// }
 				}
 
 				div.taskGroup {
@@ -1838,6 +1885,24 @@ div.VIATocTaskExerciser {
 						ul.orderItemsList {
 								list-style: none;
 								padding: 0;
+						}
+
+						ol.orderItemsList {
+								// // the numbers
+								// li.orderItem {
+								// 		position:relative;
+										
+								// 		&::before {
+								// 				position:absolute;
+								// 				top:0;
+								// 				background-color: green;
+								// 		}
+								// }
+						}
+						
+						ul.orderItemsList, ol.orderItemsList {
+//								list-style: none;
+//								padding: 0;
 
 								li.orderItem {
 										@pairBorder: 1px solid black;
@@ -1853,22 +1918,26 @@ div.VIATocTaskExerciser {
 										}
 										
 										cursor: move;
-										display: flex;
-										justify-content: flex-start;
-										align-items: flex-start;
 										margin-top: 0;
 										margin-bottom: 0;
 										padding: @pad 0;
 
-										div.orderSymbol {
-												// width: 2em;
-												// display: inline-block;
-												flex: 0 0 2rem;
-										}
+										div.orderItemContent {
 
-										div.orderContent {
-												//										display: inline-block;
-												//										flex-basis: auto;
+												display: flex;
+												justify-content: flex-start;
+												align-items: flex-start;
+												
+												div.orderSymbol {
+														// width: 2em;
+														// display: inline-block;
+														flex: 0 0 2rem;
+												}
+
+												div.orderContent {
+														//										display: inline-block;
+														//										flex-basis: auto;
+												}
 										}
 								}
 						}
@@ -2039,6 +2108,20 @@ div.VIATocTeacherMyCockpit {
 		}
 }
 
+div.VIATocMyPortfolioComponent {
+
+		a.deleteAction {
+				margin-top: 0.3em;
+				margin-left: 1em;
+//				color: black;
+				float: right;
+				vertical-align: bottom;
+		}
+		
+}
+
+
+
 
 div.lightboxModal {
 		div.invitationCode {
@@ -2143,7 +2226,7 @@ span.inlineAssetAudio {
 }
 
 .correct {
-		background-color: #cfc;
+		background-color: @correctColor;
 }
 
 .wrong {
