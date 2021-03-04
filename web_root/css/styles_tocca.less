@@ -822,6 +822,24 @@ div.VIATocTaskExerciser {
 				
 				margin-bottom: 50px;
 
+				// General wrapping styles for backend usage
+				.spaced {
+						letter-spacing: 0.1em;
+				}
+				.framed {
+						padding: 10px;
+						margin: 15px 0;
+						border: 1px solid #aaa;
+				}
+				.smaller {
+						font-size: 88%;
+				}
+				.indented {
+						margin-left: 10%;
+						margin-right: 10%;
+				}
+
+				
 				div.topToolbar {
 						//								float: right;
 						// .bigButton.ignoreTask {
@@ -1424,10 +1442,12 @@ div.VIATocTaskExerciser {
 						.noUserSelect();
 						.noTouch();
 						letter-spacing: 0.1em;
+						.spaced();
+						.framed();
 						//Nicht, hinterlässt weisse verratene Lücken beim Markieren		word-spacing: 0.1em;
-						padding: 10px;
-						margin: 15px 0;
-						border: 1px solid #aaa;
+						// padding: 10px;
+						// margin: 15px 0;
+						// border: 1px solid #aaa;
 
 						span.highlightArea.solution {
 								border: 1px solid #333;
