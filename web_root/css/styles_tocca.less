@@ -48,8 +48,8 @@
 // @t-color-tandem-player2-light: lighten(@t-color-tandem-player2, 10%);
 
 @t-color-level-normal: @t-color-blue;
-@t-color-level-intermediate: @t-color-blue;
-@t-color-level-mothertongue: #d48625;
+@t-color-level-intermediate: #008ed2;
+@t-color-level-mothertongue: @t-color-level-intermediate; // #d48625;
 
 @t-color-vocabolario: #b30061;
 @t-color-palloncini: #009080;
@@ -422,17 +422,21 @@ div.VIAPublicHomeComponent {
 				padding: 0;
 				margin: 1rem 0;
 
-				div.title {
-						background-image: url(/site/images/public_banner.jpg);
-						background-repeat: no-repeat;
-						background-size: cover;
-						font-size: 4rem;
-						line-height: 4rem;
-						color: white;
-						padding: 1em 0;
-						text-align: center;
-						margin-bottom: 1rem;
+				img.bannerImage {
+						margin-bottom: 1em;
 				}
+				
+				// div.title {
+				// 		background-image: url(/site/images/public_banner.jpg);
+				// 		background-repeat: no-repeat;
+				// 		background-size: cover;
+				// 		font-size: 4rem;
+				// 		line-height: 4rem;
+				// 		color: white;
+				// 		padding: 1em 0;
+				// 		text-align: center;
+				// 		margin-bottom: 1rem;
+				// }
 
 				.bigButtonStyle(@t-color-primary, white, true);
 
@@ -2052,7 +2056,7 @@ ul.modulesList {
 						font-weight: bold;
 				}
 				&.level-l2 {
-						font-weight: normal;
+						font-weight: bold;
 				}
 				&.level-l3 {
 						font-weight: bold;
@@ -2061,9 +2065,20 @@ ul.modulesList {
 				span.indexCode {
 						display: inline-block;
 						width: 3em;
-						font-weight: normal;
+//						font-weight: normal;
 				}
 
+				span.level {
+						width: 2.5em;
+						display: inline-block;
+						position: relative;
+						top: 2px; // Optical centering
+						img.level {
+								height: 1em;
+								vertical-align: baseline;
+						}	
+				}
+				
 				span.moduleStatus {
 						margin-top: 0.2em;
 						color: black;
