@@ -120,6 +120,7 @@ span.svg-icon {
 }
 
 body {
+
 		
 		div.coreContainer {
 
@@ -139,7 +140,7 @@ body {
 
 		div.footer {
 				padding: 0.5em 1em;
-				background-color: inherit;
+//				background-color: inherit;
 
 				img.hepLogo {
 						vertical-align: bottom; 
@@ -206,6 +207,20 @@ div.pillarParagraph {
 		}
 }
 
+.levelColors() {
+		&.level-l1 {
+				color: @t-color-level-normal;
+		}
+
+		&.level-l2 {
+				color: @t-color-level-intermediate;
+		}
+
+		&.level-l3 {
+				color: @t-color-level-mothertongue;
+		}
+}
+
 .level-l1 {
 		color: @t-color-level-normal;
 }
@@ -223,6 +238,8 @@ div.pillarParagraph {
 // =======================================================================
 
 div.mainContainer {
+		min-height: 95vh;
+		
 		.toccamoduleBorderColor("div.t-header nav.t-menubar ul.uk-navbar-nav li.active");
 		.toccamoduleColorProperty("div.t-header nav.t-menubar ul.uk-navbar-nav li.active a svg", 'stroke');
 		.toccamoduleColorProperty("div.t-header nav.t-menubar ul.uk-navbar-nav li.active a svg", 'fill');				
@@ -387,6 +404,10 @@ div.t-header {
 														//height: 1rem;
 												}
 										}
+
+										&.logout {
+												padding-top: 1em;
+										}
 								}
 						}
 
@@ -420,11 +441,11 @@ div.VIAPublicHomeComponent {
 				// background-repeat: no-repeat;
 				// background-size: cover;
 				padding: 0;
-				margin: 1rem 0;
+				margin: 0;
 
-				img.bannerImage {
-						margin-bottom: 1em;
-				}
+				// img.bannerImage {
+				// 		margin-bottom: 1em;
+				// }
 				
 				// div.title {
 				// 		background-image: url(/site/images/public_banner.jpg);
@@ -437,14 +458,23 @@ div.VIAPublicHomeComponent {
 				// 		text-align: center;
 				// 		margin-bottom: 1rem;
 				// }
-
+		}
+		
+		div.loginSection {
+				margin: 2em 0;
+				font-size: 120%;
+				
 				.bigButtonStyle(@t-color-primary, white, true);
 
 		}
 
-		// div.infoButtons {
-		// 		.bigButtonStyle(@t-color-red);
-		// }
+		div.infoButtons {
+				//				.bigButtonStyle(@t-color-red);
+				div.infoButton {
+						font-size: 120%;
+						line-height: 150%;
+				}
+		}
 
 }
 
@@ -1990,6 +2020,7 @@ div.VIAUnitComponent {
 				// color: white;
 				// text-align: center;
 				// padding: 0;
+				margin-bottom: 0;
 
 				display: flex;
 				justify-content: space-between;
@@ -2030,6 +2061,11 @@ div.VIAUnitComponent {
 				// }
 		}
 
+		div.legend {
+				text-align: right;
+				font-size: 80%;
+		}
+
 }
 
 ul.modulesList {
@@ -2052,31 +2088,44 @@ ul.modulesList {
 				// 		background-color: #57DA48;
 				// }
 
-				&.level-l1 {
-						font-weight: bold;
-				}
-				&.level-l2 {
-						font-weight: bold;
-				}
-				&.level-l3 {
-						font-weight: bold;
-				}
+				font-weight: bold;
+				color: @t-color-level-normal;
+				.levelColors();
 
+				// &.level-l1 {
+				// 		font-weight: bold;
+				// }
+				// &.level-l2 {
+				// 		font-weight: bold;
+				// }
+				// &.level-l3 {
+				// 		font-weight: bold;
+				// }
+
+				a.gotoModule {
+						white-space: nowrap;
+				}
+				
 				span.indexCode {
 						display: inline-block;
-						width: 3em;
+						width: 2.5em;
 //						font-weight: normal;
 				}
 
 				span.level {
-						width: 2.5em;
+						width: 2em;
 						display: inline-block;
 						position: relative;
 						top: 2px; // Optical centering
 						img.level {
 								height: 1em;
 								vertical-align: baseline;
-						}	
+						}
+				}
+
+				span.moduleTitle {
+						display: inline-block;
+						width: auto;
 				}
 				
 				span.moduleStatus {
@@ -2105,7 +2154,7 @@ ul.modulesList {
 
 div.backButton {
 	//	.uk-container();
-		margin: 0.1em 0 1em 1em;
+		padding: 1em 0 1em 1em;
 
 		a.backButtonAnchor {
 				.button();
@@ -2149,6 +2198,10 @@ div.VIATocTeacherMyCockpit {
 }
 
 div.VIATocMyPortfolioComponent {
+
+		// div.legend {
+		// 		text-align: right;
+		// }
 
 		a.deleteAction {
 				margin-top: 0.3em;
