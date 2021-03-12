@@ -63,14 +63,13 @@
 
 		body {
 				div.mainContainer {
-						//						position: relative;
 						padding-bottom: 3em;
-						div.footer {
-								bottom: 3px;
-								position: absolute;
-								//width: 100%;
-								font-size: 90%;
-						}
+				}
+				
+				div.footer {
+						bottom: 3px;
+						position: absolute;
+						font-size: 90%;
 				}
 		}
 }
@@ -92,6 +91,8 @@
 						background-color: @backgroundcolor;
 						padding-left: 10%;
 						padding-right: 10%;
+
+						padding-bottom: 4em; // Because of fixed footer
 
 						div.core {
 								background-color: white;
