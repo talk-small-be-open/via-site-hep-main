@@ -1374,13 +1374,16 @@ div.VIATocTaskExerciser {
 //								border-bottom: @pairBorder;
 
 								.selection() {
-										&.selected {
-												background-color: yellow;
-										}
-
 										&:hover {
 												background-color: lightyellow;
 										}
+										&.selected {
+												background-color: yellow;
+										}
+										&.correct {
+												background-color: @correctColor;
+										}
+
 								}
 								
 								span.hintSymbol {
@@ -1561,6 +1564,10 @@ div.VIATocTaskExerciser {
 								div.pairingMessage {
 										color: green;
 								}
+								div.pairingExpired {
+										color: red;
+								}
+								
 						}
 	
 						// .pairingCode() {
@@ -1581,7 +1588,10 @@ div.VIATocTaskExerciser {
 						&.VIAUserPairingPassiveComponent {
 								div.yourId {
 										span.theId {
+												display: inline-block;
 												background-color: #eee;
+												letter-spacing: 0.2em;
+//												padding-right: -0.5em;
 										}
 								}
 						}
@@ -1614,7 +1624,7 @@ div.VIATocTaskExerciser {
 						@nonGameCardColor: #ddd;
 
 						.playerLabel(@circleSize) {
-								span.playerLabel {
+								span.playerChar {
 										display: inline-block;
 										font-size: 0.7 * @circleSize;
 										background-color: white;
@@ -1624,9 +1634,23 @@ div.VIATocTaskExerciser {
 										border-radius: 50%;
 										vertical-align: middle;
 										line-height: @circleSize;
-
-										span.playerChar {
-												
+										
+								}
+								span.playerLabel {
+										span.playerIsMe {
+												display: inline-block;
+												background-color: #fffd37;
+												color: #000000;
+												border: 1px solid #ccc;
+												border-radius: 0.5em;
+												//transform: rotate(-20deg);
+												font-size: 0.7rem;
+												font-weight: normal;
+												padding-left: 0.3em;
+												padding-right: 0.3em;
+												position: absolute;
+												left: 80%;
+												top: -20%;
 										}
 								}
 						}
@@ -1678,7 +1702,7 @@ div.VIATocTaskExerciser {
 								text-align: center;
 								
 								.playerLabel(4rem);
-								span.playerLabel {
+								span.playerChar {
 										margin: 0.2em 0;
 								}
 
@@ -1706,6 +1730,7 @@ div.VIATocTaskExerciser {
 						div.questionAndAnswer {
 								//						padding: 1em;
 								@biggerFont: 150%;
+								@otherPlayerFontColor: #666;
 								@padding: 1rem;
 								@iconSize: 3rem;
 
@@ -1749,7 +1774,9 @@ div.VIATocTaskExerciser {
 										z-index: 5;
 										top: -1.5 * @radius;
 										margin-bottom: -1.5 * @radius;
-										padding: @padding;
+										padding-left: @padding;
+										padding-right: @padding;
+										padding-bottom: @padding * 0.1;
 										padding-top: 2.5 * @radius;
 										margin-top: 0;
 										//font-size: @biggerFont;
@@ -1767,17 +1794,28 @@ div.VIATocTaskExerciser {
 												cursor: pointer;
 												.icon {
 														font-size: @iconSize;
+
+														&.dropdown {
+																font-size: @iconSize * 0.6;
+																position: relative;
+																top: -0.5em;
+														}
 												}
 										}
 
 										div.interaction {
 												margin: 1em 0;
 												text-align: center;
-												font-size: 200%;
+
 
 												div.buttons {
 														display: flex;
 														justify-content: space-evenly;
+
+														// Buttons
+														a, .spinner {
+																font-size: 300%;
+														}
 
 														div.spinner {
 																display: none;
@@ -1800,12 +1838,24 @@ div.VIATocTaskExerciser {
 								&.current {
 										&.hiddenAnswer {
 												div.question {
-														font-size: @biggerFont;
+														//														font-size: @biggerFont;
+												}
+										}
+
+										&.withAnswer {
+												div.question {
+														div.explanation {
+																color: @otherPlayerFontColor;
+														}
+
+														div.body {
+																color: @otherPlayerFontColor;
+														}
 												}
 										}
 										
 										div.answer {
-												font-size: @biggerFont;
+//												font-size: @biggerFont;
 										}
 								}
 								
