@@ -77,6 +77,20 @@
           <stringProp name="HTTPSampler.response_timeout">30000</stringProp>
         </ConfigTestElement>
         <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="DEV: Server Production" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">app-beta.tocca-a-te.ch</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/app</stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout">5000</stringProp>
+          <stringProp name="HTTPSampler.response_timeout">30000</stringProp>
+        </ConfigTestElement>
+        <hashTree/>
         <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="DEV: User parameters" enabled="false">
           <collectionProp name="Arguments.arguments">
             <elementProp name="userPassword" elementType="Argument">
@@ -87,6 +101,26 @@
             <elementProp name="userEmail" elementType="Argument">
               <stringProp name="Argument.name">userEmail</stringProp>
               <stringProp name="Argument.value">testo.testman1@via.test.nowhere</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="tmpPath" elementType="Argument">
+              <stringProp name="Argument.name">tmpPath</stringProp>
+              <stringProp name="Argument.value">/opt/via/tmp</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="DEV: User parameters production" enabled="false">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="userPassword" elementType="Argument">
+              <stringProp name="Argument.name">userPassword</stringProp>
+              <stringProp name="Argument.value">s834thsdgjh34t8qwfhsdvhqjq2348wjhasdfjhf2</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="userEmail" elementType="Argument">
+              <stringProp name="Argument.name">userEmail</stringProp>
+              <stringProp name="Argument.value">jmeter.integration.tester@tocca.hep</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="tmpPath" elementType="Argument">
@@ -124,7 +158,7 @@
           </collectionProp>
         </HeaderManager>
         <hashTree/>
-        <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="false">
+        <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
           <collectionProp name="AuthManager.auth_list">
             <elementProp name="" elementType="Authorization">
               <stringProp name="Authorization.url"></stringProp>
@@ -209,7 +243,7 @@
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assertion" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-2021894086">&lt;div class=&quot;title&quot;&gt;Tocca&lt;br/&gt;a te!&lt;/div&gt;</stringProp>
+                <stringProp name="1053159810">&lt;div class=&quot;VIAPublicHomeComponent VIAHomeBaseComponent&quot;&gt;</stringProp>
               </collectionProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
@@ -219,7 +253,7 @@
             <hashTree/>
             <HtmlExtractor guiclass="HtmlExtractorGui" testclass="HtmlExtractor" testname="CSS Selector Extractor" enabled="true">
               <stringProp name="HtmlExtractor.refname">link-to-login</stringProp>
-              <stringProp name="HtmlExtractor.expr">.toccaBanner .bigButton</stringProp>
+              <stringProp name="HtmlExtractor.expr">div.VIAPublicHomeComponent div.loginSection a.bigButton</stringProp>
               <stringProp name="HtmlExtractor.attribute">href</stringProp>
               <stringProp name="HtmlExtractor.default"></stringProp>
               <boolProp name="HtmlExtractor.default_empty_value">false</boolProp>
