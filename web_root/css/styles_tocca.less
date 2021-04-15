@@ -426,7 +426,7 @@ div.t-header {
 
 
 div.inputDialog {
-		input[type=text] {
+		input[type=text], textarea {
 				width: 100%;
 				font-size: 120%;
 				margin: 1em 0;
@@ -746,8 +746,10 @@ div.VIATocModuleExerciser {
 				.accTitle {
 						padding: 0.5em 0;
 						margin: 0;
+						margin-right: 0.6em;
 						display: inline-block;
 						color: @t-color-blue;
+						text-align: left;
 				}
 
 				&.mothertongue {
@@ -757,7 +759,8 @@ div.VIATocModuleExerciser {
 				}
 
 				span.accIcons {
-						margin-left: 1em;
+						padding: 0.5em 0;
+//						margin-left: 1em;
 						img.iconActivityType {
 								vertical-align: text-top;
 								width: 2em;
@@ -1268,6 +1271,19 @@ div.VIATocTaskExerciser {
 						a {
 								.icon {
 										margin-right: 0.5em;
+								}
+
+								img.downloadPreview {
+										max-width: 10em;
+										border: 1px solid #eee;
+								}
+
+								&:hover {
+										img.downloadPreview {
+												max-width: 10em;
+												border-color: @base-link-color;
+										}
+										
 								}
 						}
 				}
