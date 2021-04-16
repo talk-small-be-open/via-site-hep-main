@@ -154,16 +154,21 @@ body {
 				background-color: @t-color-primary;
 				div.coreContainer {
 						background-color: @t-color-primary;
+
+						a {
+								text-decoration: underline;
+						}
+
 				}
 
-				a {
-						color: black;
-						text-decoration: underline;
+				// a {
+				// 		color: black;
+				// 		text-decoration: underline;
 
-						// &:hover {
-						// 		color: #666;
-						// }
-				}
+				// 		// &:hover {
+				// 		// 		color: #666;
+				// 		// }
+				// }
 		}
 
 		// Styles for the non-logged in public UI
@@ -178,12 +183,14 @@ body {
 						border-color: white;
 				}
 
-				a {
-						color: black;
-//						text-decoration: underline;
+				div.coreContainer {
+						a {
+								color: black;
+//								text-decoration: underline;
 
-						&:hover {
-								color: #666;
+								&:hover {
+										color: #666;
+								}
 						}
 				}
 		}

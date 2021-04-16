@@ -14,11 +14,16 @@
 //		font-size: 200%;
 		border: 2px solid @global-color;
 		line-height: 1em;
+		text-decoration: none; 
 
 		&:hover {
 				text-decoration: none;
 		}
+}
 
+// Strong rule, f**ing never underline text in a button!
+a.bigButton {
+		text-decoration: none !important; 
 }
 
 // Mixin, to define the style of a big button inside a region
