@@ -88,6 +88,8 @@ a.bigButton {
 		&.toccamodule1 { @{s} { @{p}: @t-color-toccamodule1;} }
 		&.toccamodule2 { @{s} { @{p}: @t-color-toccamodule2;} }
 		&.toccamodule3 { @{s} { @{p}: @t-color-toccamodule3;} }
+		&.toccamoduleP { @{s} { @{p}: @t-color-palloncini;} }
+		&.toccamoduleV { @{s} { @{p}: @t-color-vocabolario;} }
 		&.toccamoduleExtras { @{s} { @{p}: @t-color-toccamoduleExtras;} }
 }
 
@@ -132,12 +134,16 @@ a.bigButton {
 		&.toccamodule1 {@{s} {.style(@t-color-toccamodule1)}}
 		&.toccamodule2 {@{s} {.style(@t-color-toccamodule2)}}
 		&.toccamodule3 {@{s} {.style(@t-color-toccamodule3)}}
+		&.toccamoduleP {@{s} {.style(@t-color-palloncini)}}
+		&.toccamoduleV {@{s} {.style(@t-color-vocabolario)}}
 		&.toccamoduleExtras {@{s} {.style(@t-color-toccamoduleExtras)}}
 
 		// If button ITSELF is attributed with toccamoduleX then this gets precedence
 		@{s}.toccamodule1 {.style(@t-color-toccamodule1)}
 		@{s}.toccamodule2 {.style(@t-color-toccamodule2)}
 		@{s}.toccamodule3 {.style(@t-color-toccamodule3)}
+		@{s}.toccamoduleP {.style(@t-color-palloncini)}
+		@{s}.toccamoduleV {.style(@t-color-vocabolario)}
 		@{s}.toccamoduleExtras {.style(@t-color-toccamoduleExtras)}
 
 }
