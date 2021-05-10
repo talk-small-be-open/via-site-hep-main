@@ -175,9 +175,9 @@ body {
 		// Styles for the non-logged in public UI
 		&.public {
 
-				h1, h2, h3 {
-						color: white;
-				}
+				// h1, h2, h3 {
+				// 		color: white; "WHY?"
+				// }
 
 				input.submit, button, a.uk-button {
 						color: white;
@@ -738,9 +738,24 @@ div.VIATocModuleExerciser {
 				margin-top: 0.5em;
 				margin-bottom: 1em;
 
-				&.allMothertongue {
-						color: @t-color-level-mothertongue;
+				.levelColors();
+
+				span.level {
+						width: 1em;
+						display: inline-block;
+						position: relative;
+						margin-left: -1em;
+//						margin-right: -1em;
+						top: -0.5em; // Optical centering
+						img.level {
+								height: 0.5em;
+								vertical-align: baseline;
+						}
 				}
+
+				// &.allMothertongue {
+				// 		color: @t-color-level-mothertongue;
+				// }
 		}
 
 		div.moduleBody {
@@ -855,267 +870,319 @@ div.VIATocModuleExerciser {
 }
 
 
-// Not inside the VIATocModuleExerciser, because it could be stand alone (e.g. in the backend testdrive)
 div.VIATocTaskExerciser {
 		padding-left: 0.2em;
 		padding-right: 0.2em;
+		margin-bottom: 3em;
+}
 
-		margin-bottom: 1em;
+// Not inside the VIATocModuleExerciser, because it could be stand alone (e.g. in the backend testdrive)
+// Styles inside the content of tasks
+div.exercise {
+		
+		@dropTargetHoverColor: yellow;
+		
+		// Wozu?
+//		margin-bottom: 50px;
+
+		// General wrapping styles for backend usage
+		.spaced {
+				letter-spacing: 0.1em;
+		}
+		.framed {
+				padding: 10px;
+				margin: 15px 0;
+				border: 1px solid #aaa;
+		}
+		.smaller {
+				font-size: 88%;
+		}
+		.indented {
+				margin-left: 10%;
+				margin-right: 10%;
+		}
+
+		
+		div.topToolbar {
+				//								float: right;
+				// .bigButton.ignoreTask {
+				// 		margin-top: 0.5em;
+				// 		height: 1.5em;
+				// }
+		}
+
+		// Titles inside task content, should not be as big as official titles
+		h1, h2, h3 {
+				font-weight: bold;
+				text-align: left;
+				line-height: 1em;
+				margin-top: 1em;
+				margin-bottom: 0.5em;
+		}
+
+		h1 {
+				font-size: 120%;
+		}
+
+		h2 {
+				font-size: 110%;
+		}
+
+		h3 {
+				font-size: 100%;
+		}
+
+		table {
+				//						border: 1px solid #999;
+				border-collapse: collapse;
+
+				tr {
+						border-bottom: 1px solid #999;								
+				}
+
+				td, th {
+						padding-top: 5px;
+						padding-bottom: 5px;
+						padding-right: 2px;
+				}
+
+				td + td, th + th {
+						border-left: 1px solid #999;
+						padding-left: 2px;
+				}
+		}
+
+		
+		input[type=text] {
+				font-family: inherit;
+				font-size: inherit;
+				padding: 0 2px;
+				margin: -2px 0;
+		}
+
+		input[type=text].clozeTextPlaceholder {
+				.clozeTextPlaceholder;
+
+				&:focus {
+						outline: 1px solid #ccc;
+						background-color: #ffd;
+				}
+
+				// Intentionally set as empty by user
+				&.markedAsEmpty {
+						background-color: black;
+				}
+		}
+
+		span.markAsEmpty {
+				cursor: pointer;
+				// border: 2px solid black;
+				//						padding: 0 3px;
+
+				// &.active {
+				// 		background-color: green;
+				// }
+		}
+
+		
+		input, select, textarea {
+				// font-family: @base-body-font-family;
+		}
+
+		p {
+				margin-top: 3px;
+				margin-bottom: 3px;
+		}
+
+		hr.divider {
+				border-color: #999;
+				margin: 2em 0;
+		}
 
 
-		// Styles inside the content of tasks
-		div.exercise {
+
+		div.p2pStatus {
+
 				
-				@dropTargetHoverColor: yellow;
-				
-				margin-bottom: 50px;
+				//border: 2px solid green;
+				//				margin: 0.5em;
+				//						padding: 0.3em;
+				display: inline-block;
+				// font-size: 60%;
+				color: #eee;
 
-				// General wrapping styles for backend usage
-				.spaced {
-						letter-spacing: 0.1em;
-				}
-				.framed {
-						padding: 10px;
-						margin: 15px 0;
-						border: 1px solid #aaa;
-				}
-				.smaller {
-						font-size: 88%;
-				}
-				.indented {
-						margin-left: 10%;
-						margin-right: 10%;
+				&.open {
+						//						background-color: grey;
+						color: black;
 				}
 
-				
-				div.topToolbar {
-						//								float: right;
-						// .bigButton.ignoreTask {
-						// 		margin-top: 0.5em;
-						// 		height: 1.5em;
-						// }
+				&.data {
+						color: green;
 				}
 
-				// Titles inside task content, should not be as big as official titles
-				h1, h2, h3 {
-						font-weight: bold;
-						text-align: left;
-						line-height: 1em;
-						margin-top: 1em;
-						margin-bottom: 0.5em;
+				&.error {
+						// border: 2px solid red;
+						color: red;
+				}
+		}
+		
+		
+		div.selectOneInput, div.selectPointsInput {
+				margin-bottom: 10px;
+
+				label:hover {
+						background-color: #eee;
 				}
 
-				h1 {
-						font-size: 120%;
+				span.wrongIcon {
+						position: relative;
+						left: -15px;
 				}
 
-				h2 {
-						font-size: 110%;
-				}
 
-				h3 {
-						font-size: 100%;
-				}
+		}
 
-				table {
-//						border: 1px solid #999;
-						border-collapse: collapse;
 
-						tr {
-								border-bottom: 1px solid #999;								
+		div.selectOneInput, div.selectMany {
+
+				.bigButtonStyle(@t-color-blue);
+
+				label.bigButton {
+						//								text-align: left;
+						position: relative;
+						padding-left: 1.5em;
+						padding-right: 1.5em;
+
+						.checkedIcon {
+								visibility: hidden;
+								position: absolute;
+								left: 0.3em;
+								z-index: 999;
 						}
 
-						td, th {
-								padding-top: 5px;
-								padding-bottom: 5px;
-								padding-right: 2px;
-						}
-
-						td + td, th + th {
-								border-left: 1px solid #999;
-								padding-left: 2px;
-						}
-				}
-
-				
-				input[type=text] {
-						font-family: inherit;
-						font-size: inherit;
-						padding: 0 2px;
-						margin: -2px 0;
-				}
-
-				input[type=text].clozeTextPlaceholder {
-						.clozeTextPlaceholder;
-
-						&:focus {
-								outline: 1px solid #ccc;
-								background-color: #ffd;
-						}
-
-						// Intentionally set as empty by user
-						&.markedAsEmpty {
-								background-color: black;
-						}
-				}
-
-				span.markAsEmpty {
-						cursor: pointer;
-						// border: 2px solid black;
-//						padding: 0 3px;
-
-						// &.active {
-						// 		background-color: green;
-						// }
-				}
-
-				
-				input, select, textarea {
-						// font-family: @base-body-font-family;
-				}
-
-				p {
-						margin-top: 3px;
-						margin-bottom: 3px;
-				}
-
-				hr.divider {
-						border-color: #999;
-						margin: 2em 0;
-				}
-
-
-
-				div.p2pStatus {
-
-						
-						//border: 2px solid green;
-						//				margin: 0.5em;
-//						padding: 0.3em;
-						display: inline-block;
-						// font-size: 60%;
-						color: #eee;
-
-						&.open {
-								//						background-color: grey;
-								color: black;
-						}
-
-						&.data {
-								color: green;
-						}
-
-						&.error {
-								// border: 2px solid red;
-								color: red;
-						}
-				}
-				
-				
-				div.selectOneInput, div.selectPointsInput {
-						margin-bottom: 10px;
-
-						label:hover {
-								background-color: #eee;
-						}
-
-						span.wrongIcon {
-								position: relative;
-								left: -15px;
-						}
-
-
-				}
-
-
-				div.selectOneInput, div.selectMany {
-
-						.bigButtonStyle(@t-color-blue);
-
-						label.bigButton {
-//								text-align: left;
-								position: relative;
-								padding-left: 1.5em;
-								padding-right: 1.5em;
-
+						&.active {
 								.checkedIcon {
-										visibility: hidden;
-										position: absolute;
-										left: 0.3em;
-										z-index: 999;
+										visibility: visible;
 								}
 
-								&.active {
-										.checkedIcon {
-												visibility: visible;
-										}
-
-										&.wrong {
-												background-color: @wrongColor;
-												// .checkedIcon {
-												// 		visibility: hidden;
-												// }
-										}
-
-										&.correct {
-												background-color: @correctColor;
-										}
-
-
+								&.wrong {
+										background-color: @wrongColor;
+										// .checkedIcon {
+										// 		visibility: hidden;
+										// }
 								}
+
+								&.correct {
+										background-color: @correctColor;
+								}
+
 
 						}
 
 				}
-				
+
+		}
+		
+		div.selectOneInput {
+
+				select.selectOneInput {
+						max-width: 100%;
+				}
+
+
+		}
+
+		div.selectMany {
+				// label:hover {
+				// 		background-color: #eee;
+				// }
+
+				span.hintSymbol {
+						display: inline-block;
+						margin: 1em 0;
+				}
+
+				// span.wrongIcon {
+				// 		position: relative;
+				// 		left: -15px;
+				// }
+
+		}
+		
+		div.clozeText {
+				line-height: 1.8em;
+
 				div.selectOneInput {
-
-						select.selectOneInput {
-								max-width: 100%;
-						}
-
-
+						display: inline-block;
 				}
 
-				div.selectMany {
-						// label:hover {
-						// 		background-color: #eee;
-						// }
 
-						span.hintSymbol {
-								display: inline-block;
-								margin: 1em 0;
+				span.dragDropDraggable {
+						.draggable();
+						
+						background-color: #eee;
+						padding: 1px 2px;
+						border: 1px solid #ccc;
+
+						// margin-bottom: 10px;
+						// line-height: normal;
+						display: inline-block;
+
+						&:hover {
+								border: 1px solid black;
 						}
 
-						// span.wrongIcon {
-						// 		position: relative;
-						// 		left: -15px;
-						// }
+						figure.inlineAssetImage {
+								display: inline-block;
 
+								figcaption {
+										display: none;
+								}
+						}
+						
 				}
 				
-				div.clozeText {
-						line-height: 1.8em;
+				span.dragDropTarget {
+						display: inline-block;
+						min-width: 100px;
+						background-color: #eee;
+						padding-left: 5px;
+						padding-bottom: 1px;
+						min-height: 1em;
+						border-top: none;
+						border-left: none;
+						border-right: none;
+						border-bottom: @borderBottomClozePlaceholders;
 
-						div.selectOneInput {
-								display: inline-block;
+						.dropHover();
+
+						// Drag element in a drop container
+						span.dragDropDraggable {
+								margin-right: 10px;
 						}
 
+						// Container, combining correction and element
+						span.draggableContainer {
+								white-space: nowrap;
+								display: inline-block;
+						}
+				}
 
+				div.dragDropDraggables {
+						background-color: #eee;
+						border: 1px dotted black;
+						margin: 10px 0;
+						padding: 0.5em 5px;
+						min-height: 20px;
+
+						.dropHover();
+						
 						span.dragDropDraggable {
 								.draggable();
 								
-								background-color: #eee;
-								padding: 1px 2px;
-								border: 1px solid #ccc;
-
-								// margin-bottom: 10px;
+								margin: 5px;
 								// line-height: normal;
 								display: inline-block;
-
-								&:hover {
-										border: 1px solid black;
-								}
 
 								figure.inlineAssetImage {
 										display: inline-block;
@@ -1123,144 +1190,98 @@ div.VIATocTaskExerciser {
 										figcaption {
 												display: none;
 										}
+										
+										// span.assetInfo {
+										// 		.uk-text-muted();
+										// 		cursor: pointer;
+										// 		float: right;
+										// }
 								}
 								
 						}
-						
-						span.dragDropTarget {
-								display: inline-block;
-								min-width: 100px;
-								background-color: #eee;
-								padding-left: 5px;
-								padding-bottom: 1px;
-								min-height: 1em;
-								border-top: none;
-								border-left: none;
-								border-right: none;
-								border-bottom: @borderBottomClozePlaceholders;
-
-								.dropHover();
-
-								// Drag element in a drop container
-								span.dragDropDraggable {
-										margin-right: 10px;
-								}
-
-								// Container, combining correction and element
-								span.draggableContainer {
-										white-space: nowrap;
-										display: inline-block;
-								}
-						}
-
-						div.dragDropDraggables {
-								background-color: #eee;
-								border: 1px dotted black;
-								margin: 10px 0;
-								padding: 0.5em 5px;
-								min-height: 20px;
-
-								.dropHover();
-								
-								span.dragDropDraggable {
-										.draggable();
-										
-										margin: 5px;
-										// line-height: normal;
-										display: inline-block;
-
-										figure.inlineAssetImage {
-												display: inline-block;
-
-												figcaption {
-														display: none;
-												}
-												
-												// span.assetInfo {
-												// 		.uk-text-muted();
-												// 		cursor: pointer;
-												// 		float: right;
-												// }
-										}
-										
-								}
-						}
-
 				}
 
-				div.buttons {
-						margin-top: 15px;
-				}
+		}
+
+		div.buttons {
+				margin-top: 15px;
+		}
 
 
-				div.audioPlayer {
-						margin: 10px 0px;
-						span.assetInfo {
-								float: right;
-						}
+		div.audioPlayer {
+				.clearfix();
 
-						
-						div.transcriptionContainer {
-
-								div.transcriptionText {
-										font-size: 90%;
-										line-height: normal;
-								}
-
-								
-								div.audioTranscription {
-										&.disabled {
-												.uk-hidden();
-										}
-
-										button.printThis {
-												float: right;
-										}
-								}
-						}
+				margin: 10px 0px;
+				span.assetInfo {
+						float: right;
 				}
 
 				
-				div.videoPlayer {
+				div.transcriptionContainer {
+
+						div.transcriptionText {
+								font-size: 90%;
+								line-height: normal;
+						}
+
 						
-						div.videoContainer {
-								margin-right: 10px;
+						div.audioTranscription {
+								&.disabled {
+										.uk-hidden();
+								}
 
-								video {
-										width: 100%;
-										height: auto;
-										//box-sizing: border-box;
+								button.printThis {
+										float: right;
 								}
 						}
+				}
+		}
 
-						div.transcriptionContainer {
+		
+		div.videoPlayer {
+				.clearfix();
+				
+				div.videoContainer {
+						margin-right: 10px;
 
-								div.videoTranscription {
-										&.disabled {
-												.uk-hidden();
-										}
-
-										button.printThis {
-												float: right;
-										}
-								}
-
-								div.transcriptionText {
-										font-size: 90%;
-										line-height: normal;
-								}
-						}
-
-						span.assetInfo {
-								float: right;
+						video {
+								width: 100%;
+								height: auto;
+								//box-sizing: border-box;
 						}
 				}
 
-				div.youtubePlayer, div.vimeoPlayer {
+				div.transcriptionContainer {
+
+						div.videoTranscription {
+								&.disabled {
+										.uk-hidden();
+								}
+
+								button.printThis {
+										float: right;
+								}
+						}
+
+						div.transcriptionText {
+								font-size: 90%;
+								line-height: normal;
+						}
+				}
+
+				span.assetInfo {
+						float: right;
+				}
+		}
+
+		div.youtubePlayer, div.vimeoPlayer {
+				position: relative;
+				width: 100%; // Can be reduced by responsive rules
+
+				> div.aspectRatioBox {
 						position: relative;
 						width: 100%;
-						height: 0;
-						padding-bottom: 56.25%;
+						padding-bottom: 56.25%; // Trick: Keeps 16:9 ratio, see https://fettblog.eu/blog/2013/06/16/preserving-aspect-ratio-for-embedded-iframes/
 
 						iframe {
 								position: absolute;
@@ -1269,661 +1290,563 @@ div.VIATocTaskExerciser {
 								width: 100%;
 								height: 100%;
 						}
-				}
 
-				div.imageDisplayer {
-						span.image {
-								display: inline-block;
-								text-align: right;
-								img {
-										display: block;
-								}
-								span.assetInfo {
+
+				}
+				
+		}
+
+		div.imageDisplayer {
+				span.image {
+						display: inline-block;
+						text-align: right;
+						img {
+								display: block;
+						}
+						span.assetInfo {
+						}
+						
+				}
+		}
+
+		div.fileDownloader {
+				a {
+						.icon {
+								margin-right: 0.5em;
+						}
+
+						img.downloadPreview {
+								max-width: 10em;
+								border: 1px solid #eee;
+						}
+
+						&:hover {
+								img.downloadPreview {
+										max-width: 10em;
+										border-color: @base-link-color;
 								}
 								
 						}
 				}
+				span.assetInfo {
+						margin-left: 0.5em;
+				}
+				
+		}
 
-				div.fileDownloader {
-						a {
-								.icon {
-										margin-right: 0.5em;
+		span.assetInfo {
+				.uk-text-muted();
+				cursor: pointer;
+		}
+
+		span.hintSymbol {
+				display: inline-block;
+				margin: 0.2em;
+				//						vertical-align: middle;
+		}
+
+
+		// Obsolete? Wir haben nur click-click und kein drag-drop bei tocca
+		div.mapPairs {
+				@pairBorder: 1px solid black;
+				
+				border-top: @pairBorder;
+				display: table;
+				border-collapse: collapse;
+				
+				div.objectPair {
+						display: table-row;
+						border-bottom: @pairBorder;
+
+						.dropHover();
+
+						span.hintSymbol {
+								float:left;
+								margin-left: -20px;
+								margin-top: 10px;
+						}
+						
+						div.leftObject {
+								display: table-cell;
+								padding-left: 10px;
+						}
+
+						div.middleColumn {
+								display: table-cell;
+						}
+
+						div.rightObject {
+								@dragHandleOffset: 25px;
+
+								display: table-cell;
+								padding: 5px 10px 5px (@dragHandleOffset + 10px);
+
+								div.objectPairDraggable {
+										background-color: #eee;
+										padding: 10px;
+										border: 1px solid #ddd;
+										margin-bottom: 10px;
+
+										.draggable();
+
+										&:hover {
+												border: 1px solid #333;
+										}
+
+										&:only-child {
+												margin-bottom: 0;
+										}
+
+										&:not(:first-child) {
+												background-color: #f99;
+										}
+
+										span.dragHandle {
+												position: absolute;
+												margin-left: -@dragHandleOffset;
+										}
+
+								}
+						}
+				}
+		}
+
+
+		div.mapPairsClickClick {
+				@pairBorder: 2px solid black;
+				
+				//						border-top: @pairBorder;
+				display: table;
+				border-collapse: collapse;
+
+
+				div.head {
+						display: table-row;
+						//								border-bottom: @pairBorder;
+						div {
+								display: table-cell;
+								text-align: left;
+								padding-left: 2em;
+								padding-bottom: 5px;
+						}
+				}
+
+				div.objectPair {
+						display: table-row;
+						//								border-bottom: @pairBorder;
+
+						.selection() {
+								&:hover {
+										background-color: lightyellow;
+								}
+								&.selected {
+										background-color: yellow;
+								}
+								&.correct {
+										background-color: @correctColor;
 								}
 
-								img.downloadPreview {
-										max-width: 10em;
-										border: 1px solid #eee;
+						}
+						
+						span.hintSymbol {
+								float:left;
+								margin-left: -20px;
+								margin-top: 10px;
+						}
+						
+						div.leftObject {
+								display: table-cell;
+								border: @pairBorder;
+								padding: 3px 22px 5px 10px;
+								cursor: pointer;
+								vertical-align: middle;
+								.selection();
+						}
+
+						// div.middleColumn {
+						// 		display: table-cell;
+						// 		width: 30px;
+						// 		text-align: right;
+						// 		padding: 0;
+						// 		//background-color: black;
+						// }
+
+						div.rightObject {
+								display: table-cell;
+								border: @pairBorder;
+								padding: 3px 10px 5px 10px;
+								cursor: pointer;
+								position: relative;
+								vertical-align: middle;
+								.selection();
+
+								svg.puzzle {
+										position: absolute;
+										left: -19px;
+										top: calc(50% - 9px);
+										width: 20px;
+										.inlet {
+												fill: white;
+										}
+
+								}
+
+								&.selected {
+										svg.puzzle {
+												.inlet {
+														fill: yellow;
+												}
+										}
 								}
 
 								&:hover {
-										img.downloadPreview {
-												max-width: 10em;
-												border-color: @base-link-color;
-										}
-										
-								}
-						}
-				}
-
-				span.assetInfo {
-						.uk-text-muted();
-						cursor: pointer;
-				}
-
-				span.hintSymbol {
-						display: inline-block;
-						margin: 0.2em;
-//						vertical-align: middle;
-				}
-
-
-				// Obsolete? Wir haben nur click-click und kein drag-drop bei tocca
-				div.mapPairs {
-						@pairBorder: 1px solid black;
-						
-						border-top: @pairBorder;
-						display: table;
-						border-collapse: collapse;
-						
-						div.objectPair {
-								display: table-row;
-								border-bottom: @pairBorder;
-
-								.dropHover();
-
-								span.hintSymbol {
-										float:left;
-										margin-left: -20px;
-										margin-top: 10px;
-								}
-								
-								div.leftObject {
-										display: table-cell;
-										padding-left: 10px;
-								}
-
-								div.middleColumn {
-										display: table-cell;
-								}
-
-								div.rightObject {
-										@dragHandleOffset: 25px;
-
-										display: table-cell;
-										padding: 5px 10px 5px (@dragHandleOffset + 10px);
-
-										div.objectPairDraggable {
-												background-color: #eee;
-												padding: 10px;
-												border: 1px solid #ddd;
-												margin-bottom: 10px;
-
-												.draggable();
-
-												&:hover {
-														border: 1px solid #333;
-												}
-
-												&:only-child {
-														margin-bottom: 0;
-												}
-
-												&:not(:first-child) {
-														background-color: #f99;
-												}
-
-												span.dragHandle {
-														position: absolute;
-														margin-left: -@dragHandleOffset;
-												}
-
-										}
-								}
-						}
-				}
-
-
-				div.mapPairsClickClick {
-						@pairBorder: 2px solid black;
-						
-//						border-top: @pairBorder;
-						display: table;
-						border-collapse: collapse;
-
-
-						div.head {
-								display: table-row;
-//								border-bottom: @pairBorder;
-								div {
-										display: table-cell;
-										text-align: left;
-										padding-left: 2em;
-										padding-bottom: 5px;
-								}
-						}
-
-						div.objectPair {
-								display: table-row;
-//								border-bottom: @pairBorder;
-
-								.selection() {
-										&:hover {
-												background-color: lightyellow;
-										}
-										&.selected {
-												background-color: yellow;
-										}
-										&.correct {
-												background-color: @correctColor;
-										}
-
-								}
-								
-								span.hintSymbol {
-										float:left;
-										margin-left: -20px;
-										margin-top: 10px;
-								}
-								
-								div.leftObject {
-										display: table-cell;
-										border: @pairBorder;
-										padding: 3px 22px 5px 10px;
-										cursor: pointer;
-										vertical-align: middle;
-										.selection();
-								}
-
-								// div.middleColumn {
-								// 		display: table-cell;
-								// 		width: 30px;
-								// 		text-align: right;
-								// 		padding: 0;
-								// 		//background-color: black;
-								// }
-
-								div.rightObject {
-										display: table-cell;
-										border: @pairBorder;
-										padding: 3px 10px 5px 10px;
-										cursor: pointer;
-										position: relative;
-										vertical-align: middle;
-										.selection();
-
 										svg.puzzle {
-												position: absolute;
-												left: -19px;
-												top: calc(50% - 9px);
-												width: 20px;
 												.inlet {
-														fill: white;
-												}
-
-										}
-
-										&.selected {
-												svg.puzzle {
-														.inlet {
-																fill: yellow;
-														}
+														fill: lightyellow;
 												}
 										}
+								}
 
-										&:hover {
-												svg.puzzle {
-														.inlet {
-																fill: lightyellow;
-														}
+								&.correct {
+										svg.puzzle {
+												.inlet {
+														fill: @correctColor;
 												}
 										}
-
-										&.correct {
-												svg.puzzle {
-														.inlet {
-																fill: @correctColor;
-														}
-												}
-										}
-
-								}
-
-								div.endColumn {
-										display: table-cell;
 								}
 
 						}
+
+						div.endColumn {
+								display: table-cell;
+						}
+
+				}
+		}
+		
+		div.score {
+				margin-top: 2em;
+				// background-color: white;
+				font-weight: bold;
+		}
+
+
+		div.objectPairDragHelper {
+				padding: 10px;
+				border: 1px solid black;
+		}
+
+		div.highlightAreas {
+
+				@highlightColor: lighten(@t-color-selection, 20%);
+				
+				.noUserSelect();
+				.noTouch();
+				letter-spacing: 0.1em;
+				.spaced();
+				.framed();
+				//Nicht, hinterlässt weisse verratene Lücken beim Markieren		word-spacing: 0.1em;
+				// padding: 10px;
+				// margin: 15px 0;
+				// border: 1px solid #aaa;
+
+				span.highlightArea.solution {
+						border: 1px solid #333;
+						padding-left: 1px;
+				}
+
+				div.pillarParagraph:first-child {
+						margin-top: 0;
 				}
 				
-				div.score {
-						margin-top: 2em;
-						// background-color: white;
-						font-weight: bold;
-				}
-
-
-				div.objectPairDragHelper {
-						padding: 10px;
-						border: 1px solid black;
-				}
-
-				div.highlightAreas {
-
-						@highlightColor: lighten(@t-color-selection, 20%);
-						
-						.noUserSelect();
-						.noTouch();
-						letter-spacing: 0.1em;
-						.spaced();
-						.framed();
-						//Nicht, hinterlässt weisse verratene Lücken beim Markieren		word-spacing: 0.1em;
-						// padding: 10px;
-						// margin: 15px 0;
-						// border: 1px solid #aaa;
-
-						span.highlightArea.solution {
-								border: 1px solid #333;
-								padding-left: 1px;
-						}
-
-						div.pillarParagraph:first-child {
-								margin-top: 0;
-						}
-						
-						span.selChar {
-								cursor: url('/images/horizontal-text-select.cur'), text;
-								&.highlighted {
-										background-color: @highlightColor;
-										color: white;
-										padding-top: 1px;
-										cursor: pointer;
-
-										// &.touchedNow {
-										// 		background-color: @highlightColor;
-										// }
-										
-								}
-								&.selected {
-										color: white;
-										background-color: @t-color-selection !important;
-								}
-						}
-
-						span.highlightArea.correct {
-								span.selChar.highlighted {
-										color: unset;
-										background-color: @correctColor;
-								}
-						}
-
-						// &.firstTake {
-						// 		span.selChar.highlighted {
-						// 				background-color: @highlightColor;		
-						// 		}
-						// }
-				}
-
-				div.taskGroup {
-						
-						div.taskGroupItem {
-								margin: 10px 0px;
-						}
-				}
-
-				div.taskBrickGroupToggler {
-						padding: 0.5em 3px;
-						margin: 0.5em 0;
-						cursor: pointer;
-						background-color: #eee;
-//						color: white;
-						border: none;
-
-						&:hover {
-								background: #999;
-						}
-				}
-
-				div.taskBrickGroup {
-						// border: 1px solid black;
-						padding: 5px;
-
-						&.hidden {
-								.hiddenSectionButWithDefinedDimension()
-						}
-
-				}
-				
-				
-
-				// See also via base styles
-				div.VIAUserPairingComponent {
-
-						div.pairingStatus {
-								div.pairingMessage {
-										color: green;
-								}
-								div.pairingExpired {
-										color: red;
-								}
-								
-						}
-	
-						// .pairingCode() {
-						// 		border: 2px solid black;
-						// 		padding: 0.3em;
-						// 		font-size: 180%;
-						// }
-
-						// div.pairingStatus {
-						// 		margin: 1em 0;
-
-						// 		div.pairingMessage {
-						// 				margin: 1em 0;
-						// 				color: green;
-						// 		}
-						// }
-						
-						&.VIAUserPairingPassiveComponent {
-								div.yourId {
-										span.theId {
-												display: inline-block;
-												background-color: #eee;
-												letter-spacing: 0.2em;
-//												padding-right: -0.5em;
-										}
-								}
-						}
-
-						// &.VIAUserPairingActiveComponent {
-						// 		div.explanation {
-						// 				margin: 0.5em 0;
-						// 		}
-
-						// 		div.codeInputContainer {
-						// 				input.codeInput {
-						// 						.pairingCode();
-						// 						font-family: monospace;
-						// 						width: 3em;
-						// 						margin-right: 1em;
-						// 				}
-
-						// 				.uk-button {
-						// 						font-size: 150%;
-						// 				}
-						// 		}
-						// }
-				}
-				
-				
-				// Tandem sequence
-				div.VIATandemSequenceExerciser {
-
-						@radius: 0.5em;
-						@nonGameCardColor: #ddd;
-
-						.playerLabel(@circleSize) {
-								span.playerChar {
-										display: inline-block;
-										font-size: 0.7 * @circleSize;
-										background-color: white;
-										width: @circleSize;
-										height: @circleSize;
-										text-align: center;
-										border-radius: 50%;
-										vertical-align: middle;
-										line-height: @circleSize;
-										
-								}
-								span.playerLabel {
-										span.playerIsMe {
-												display: inline-block;
-												background-color: #fffd37;
-												color: #000000;
-												border: 1px solid #ccc;
-												border-radius: 0.5em;
-												//transform: rotate(-20deg);
-												font-size: 0.7rem;
-												font-weight: normal;
-												padding-left: 0.3em;
-												padding-right: 0.3em;
-												position: absolute;
-												left: 80%;
-												top: -20%;
-										}
-								}
-						}
-						
-						.ajaxAction {
-								display: contents;
+				span.selChar {
+						cursor: url('/images/horizontal-text-select.cur'), text;
+						&.highlighted {
+								background-color: @highlightColor;
+								color: white;
+								padding-top: 1px;
 								cursor: pointer;
-						}
-						
-						.card {
-								display: block;
-								position: relative;
-								border-radius: @radius;
-								padding: 1em;
 
-								.uk-button {
-										border-color: black;
-										color: inherit;
-										background-color: transparent;
-										font-weight: bold;
-								}
-						}
-						
-						// .randomCode {
-						// 		font-size: 200%;
-						// 		margin: 0.5em 0;
-						// }
-
-						// div.randomCodes {
-						// 		margin: 0.5em 0;
-
-						// 		.randomCode {
-						// 				text-align: center;
-						// 		}
-						// }
-
-						div.p2pStatus {
-//								display: none;
-								margin: 1em 0;
-								// float: right;
-								// &.error {
-								// 		display: inline-block;
+								// &.touchedNow {
+								// 		background-color: @highlightColor;
 								// }
-						}
-
-						
-						a.chooser {
-								.card();
-								text-align: center;
 								
-								.playerLabel(4rem);
-								span.playerChar {
-										margin: 0.2em 0;
-								}
+						}
+						&.selected {
+								color: white;
+								background-color: @t-color-selection !important;
+						}
+				}
 
-								span.button {
-										margin-top: 1em;
+				span.highlightArea.correct {
+						span.selChar.highlighted {
+								color: unset;
+								background-color: @correctColor;
+						}
+				}
+
+				// &.firstTake {
+				// 		span.selChar.highlighted {
+				// 				background-color: @highlightColor;		
+				// 		}
+				// }
+		}
+
+		div.taskGroup {
+				
+				div.taskGroupItem {
+						margin: 10px 0px;
+				}
+		}
+
+		div.taskBrickGroupToggler {
+				padding: 0.5em 3px;
+				margin: 0.5em 0;
+				cursor: pointer;
+				background-color: #eee;
+				//						color: white;
+				border: none;
+
+				&:hover {
+						background: #999;
+				}
+		}
+
+		div.taskBrickGroup {
+				// border: 1px solid black;
+				padding: 5px;
+
+				&.hidden {
+						.hiddenSectionButWithDefinedDimension()
+				}
+
+		}
+		
+		
+
+		// See also via base styles
+		div.VIAUserPairingComponent {
+
+				div.pairingStatus {
+						span.pairingMessage {
+								color: green;
+						}
+						div.pairingExpired {
+								color: red;
+						}
+						
+				}
+				
+				// .pairingCode() {
+				// 		border: 2px solid black;
+				// 		padding: 0.3em;
+				// 		font-size: 180%;
+				// }
+
+				// div.pairingStatus {
+				// 		margin: 1em 0;
+
+				// 		div.pairingMessage {
+				// 				margin: 1em 0;
+				// 				color: green;
+				// 		}
+				// }
+				
+				&.VIAUserPairingPassiveComponent {
+						div.yourId {
+								span.theId {
 										display: inline-block;
+										background-color: #eee;
+										letter-spacing: 0.2em;
+										//												padding-right: -0.5em;
 								}
-
-								.icon {
-										font-size: 1.5em;
-								}
-
-								.button {
-										line-height: 2em;
-								}
-								
 						}
+				}
 
-						div.pairer {
-								.card();
-								//background-color: @nonGameCardColor;
-						}
+				// &.VIAUserPairingActiveComponent {
+				// 		div.explanation {
+				// 				margin: 0.5em 0;
+				// 		}
 
+				// 		div.codeInputContainer {
+				// 				input.codeInput {
+				// 						.pairingCode();
+				// 						font-family: monospace;
+				// 						width: 3em;
+				// 						margin-right: 1em;
+				// 				}
+
+				// 				.uk-button {
+				// 						font-size: 150%;
+				// 				}
+				// 		}
+				// }
+		}
+		
+		
+		// Tandem sequence
+		div.VIATandemSequenceExerciser {
+
+				@radius: 0.5em;
+				@nonGameCardColor: #ddd;
+
+				.playerLabel(@circleSize) {
+						// 								span.playerCharContainer {
+						// 										margin: 0 1em;
+						// 										display: flex;
+						// 										justify-content: center;
+						// 										align-items: center;
+
+						// 	//									display: inline-block;
+						// 										font-size: @circleSize;
+						// 										// font-size: 0.7 * @circleSize;
+						// 										padding: 0.3 * @circleSize;
+						// 										background-color: white;
+						// 										width: @circleSize;
+						// 										height: @circleSize;
+						// //										text-align: center;
+						// 										border-radius: 50%;
+						// //										vertical-align: middle;
+						// //										line-height: @circleSize;
 						
-						div.questionAndAnswer {
-								//						padding: 1em;
-								@biggerFont: 150%;
-								@otherPlayerFontColor: #666;
-								@padding: 1rem;
-								@iconSize: 3rem;
-
-								// div.body {
-								// 		padding-top: 0.5em;
-								// }
-
-								.playerLabel(2rem);
-
-								div.question {
-										.card();
-										//								margin-bottom: 2em;
-										position: relative;
-										z-index: 10;
-
-										span.playerLabel {
-												position: absolute;
-												right: 0.5em;
-												top: 0.5em;
-										}
-
-
-										div.explanation {
-												margin-top: 1em;
-												margin-bottom: 1em;
-										}
-
-										div.questionIcon {
-												text-align: center;
-												.icon {
-														font-size: @iconSize;
-														margin-right: 0.1em;
-												}
-										}
-								}
-
-								
-								div.answer {
-										.card();
-										position: relative;
-										z-index: 5;
-										top: -1.5 * @radius;
-										margin-bottom: -1.5 * @radius;
-										padding-left: @padding;
-										padding-right: @padding;
-										padding-bottom: @padding * 0.1;
-										padding-top: 2.5 * @radius;
-										margin-top: 0;
-										//font-size: @biggerFont;
-
-										span.playerLabel {
-												position: absolute;
-												right: 0.5em;
-												top: 1.2em;
-										}
-																		
-
-										div.answerIcon {
-												//font-weight: bold;
-												text-align: center;
-												cursor: pointer;
-												.icon {
-														font-size: @iconSize;
-
-														&.dropdown {
-																font-size: @iconSize * 0.6;
-																position: relative;
-																top: -0.5em;
-														}
-												}
-										}
-
-										div.interaction {
-												margin: 1em 0;
-												text-align: center;
-
-
-												div.buttons {
-														display: flex;
-														justify-content: space-evenly;
-
-														// Buttons
-														a, .spinner {
-																font-size: 300%;
-														}
-
-														div.spinner {
-																display: none;
-														}
-												}
-										}
-
-								}
-
-								&.hiddenAnswer {
-										div.question {
-												//										font-size: @biggerFont;
-										}
-										// div.answer {
-										// 		height: 2em;
-										// 		padding: 0;
-										// }
-								}
-
-								&.current {
-										&.hiddenAnswer {
-												div.question {
-														//														font-size: @biggerFont;
-												}
-										}
-
-										&.withAnswer {
-												div.question {
-														div.explanation {
-																color: @otherPlayerFontColor;
-														}
-
-														div.body {
-																color: @otherPlayerFontColor;
-														}
-												}
-										}
-										
-										div.answer {
-//												font-size: @biggerFont;
-										}
-								}
-								
-						}
-
-						.player1 {
-								background-color: @t-color-tandem-player1;
-								// &.question {
-								// 		background-color: @t-color-tandem-player1-light;
-								// }
-								// &.answer  {
-								// 		background-color: @t-color-tandem-player1;
-								// }
-						}
-
-						.player2 {
-								background-color: @t-color-tandem-player2;
-								// &.question {
-								// 		background-color: @t-color-tandem-player2-light;
-								// }
-								// &.answer {
-								// 		background-color: @t-color-tandem-player2;
-								// }
-						}
-
-						div.step2Instructions {
-								.card();
-//								background-color: @nonGameCardColor;
+						span.playerChar {
+								display: inline-block;
+								//font-size: @circleSize;
+								font-size: 0.7 * @circleSize;
+								//padding: 0.3 * @circleSize;
+								background-color: white;
+								width: @circleSize;
+								height: @circleSize;
 								text-align: center;
-								.playerLabel(2rem);
+								border-radius: 50%;
+								vertical-align: middle;
+								line-height: @circleSize;
+								padding-left: 0.05em;
+								marging-right: -0.05em;
+								padding-bottom: 0.05em;
+								marging-top: -0.05em;
+
+						}
+						span.playerLabel {
+								span.playerIsMe {
+										display: inline-block;
+										background-color: #fffd37;
+										color: #000000;
+										border: 1px solid #ccc;
+										border-radius: 0.5em;
+										//transform: rotate(-20deg);
+										font-size: 0.7rem;
+										font-weight: normal;
+										padding-left: 0.3em;
+										padding-right: 0.3em;
+										position: absolute;
+										left: 80%;
+										top: -20%;
+								}
+						}
+				}
+				
+				.ajaxAction {
+						display: contents;
+						cursor: pointer;
+				}
+				
+				.card {
+						display: block;
+						position: relative;
+						border-radius: @radius;
+						padding: 1em;
+
+						.uk-button {
+								border-color: black;
+								color: inherit;
+								background-color: transparent;
+								font-weight: bold;
+						}
+				}
+				
+				// .randomCode {
+				// 		font-size: 200%;
+				// 		margin: 0.5em 0;
+				// }
+
+				// div.randomCodes {
+				// 		margin: 0.5em 0;
+
+				// 		.randomCode {
+				// 				text-align: center;
+				// 		}
+				// }
+
+				div.p2pStatus {
+						//								display: none;
+						margin: 1.5em 0;
+						// float: right;
+						// &.error {
+						// 		display: inline-block;
+						// }
+				}
+
+				
+				a.chooser {
+						.card();
+						text-align: center;
+						padding: 0.2em;
+						padding-bottom: 3em;
+						
+						.playerLabel(3rem);
+						span.playerChar {
+								margin: 0.2em 0;
+						}
+
+						span.buttonish {
+								//										margin: 0.5em 0;
+								//display: inline-block;
+								position: absolute;
+								width: 80%;
+								bottom: 0.4em;
+								left: 10%;
+								box-sizing: border-box;
+								line-height: 2em;
+								//										border: 1px solid #333;
+								text-transform: uppercase;
+						}
+
+						.icon {
+								font-size: 1.5em;
+						}
+
+						// .button {
+						// 		line-height: 2em;
+						// }
+						
+				}
+
+				div.pairer {
+						.card();
+						//background-color: @nonGameCardColor;
+				}
+
+				
+				div.questionAndAnswer {
+						//						padding: 1em;
+						@biggerFont: 150%;
+						@otherPlayerFontColor: #666;
+						@padding: 1rem;
+						@iconSize: 4rem;
+
+						// div.body {
+						// 		padding-top: 0.5em;
+						// }
+
+						.playerLabel(2rem);
+
+						div.question {
+								.card();
+								//								margin-bottom: 2em;
+								position: relative;
+								z-index: 10;
+
 								span.playerLabel {
 										position: absolute;
 										right: 0.5em;
@@ -1931,167 +1854,370 @@ div.VIATocTaskExerciser {
 								}
 
 
+								div.explanation {
+										margin-top: 1em;
+										margin-bottom: 1em;
+								}
+
+								div.questionIcon {
+										text-align: center;
+										.icon {
+												font-size: @iconSize;
+												margin-right: 0.1em;
+										}
+								}
 						}
 
-						div.summaryPage {
-								div.summary {
-										.card();
+						
+						div.answer {
+								.card();
+								position: relative;
+								z-index: 5;
+								top: -1.5 * @radius;
+								margin-bottom: -1.5 * @radius;
+								padding-left: @padding;
+								padding-right: @padding;
+								padding-bottom: @padding * 0.1;
+								padding-top: 2.5 * @radius;
+								margin-top: 0;
+								//font-size: @biggerFont;
 
-										div.pointsSummary {
-												.uk-margin-top();
-												.uk-margin-bottom();
-												//										background-color: #f0f0f0;
-												div.points {
-														font-size: 200%;
-														margin: 1em 0;
+								span.playerLabel {
+										position: absolute;
+										right: 0.5em;
+										top: 1.2em;
+								}
+								
+
+								div.answerIcon {
+										//font-weight: bold;
+										text-align: center;
+										cursor: pointer;
+										z-index: 20;
+										.icon {
+												font-size: @iconSize;
+
+												&.answer {
+														// svg {
+														// 		stroke-width: 1px;
+														// 		stroke: black;
+														// }
+														// font-size: @iconSize * 0.6;
+														// position: relative;
+														// top: -0.5em;
 												}
-										}
-
-										div.summaryButtons {
-												display: flex;
-												justify-content: space-evenly;
-
-												.uk-button {
-														line-height: 2em;
-														width: 40%;
-
-														span.icon {
-																width: 3em;
+												&.dropdown {
+														font-size: @iconSize * 0.6;
+														position: relative;
+														top: -0.1em;
+														svg {
+																stroke-width: 2px;
+																stroke: black;
 														}
 												}
 										}
-
 								}
 
-								div.history {
-										.uk-margin-top();
-										.uk-margin-bottom();
+								div.body {
 
-										div.question {
-												background-color: @nonGameCardColor;
-										}
+										position: relative;
 										
-										div.answer {
-												background-color: lighten(@nonGameCardColor, 5%);
-												margin-bottom: 1em;
+										&.partlyHidden {
+												div.answerContent {
+														display: none;
+												}
+												div.interaction {
+														margin: 0;
+														height: 1em;
+														overflow: hidden;
+														opacity: 0.3;
+														filter: saturate(50%);
+														pointer-events: none;
+														position: absolute;
+														bottom: 0;
+														//																margin-top: -2em;
+														z-index: 10;
+														width: 100%;
+
+														div.goAheadButton {
+																display: none;
+														}
+
+												}
+
+										}
+
+										// div.answerContent {
+										// 		div.answerContent {
+										// 				display: none;
+										// 		}														
+										// }
+										
+										div.interaction {
+												margin: 1em 0;
+												text-align: center;
+
+
+												div.correctionButtons {
+														margin: 0;
+														display: flex;
+														justify-content: space-evenly;
+
+														// Buttons
+														a, .spinner, svg.icon {
+																font-size: 300%;
+														}
+
+														div.spinner {
+																display: none;
+														}
+												}
+
+												div.goAheadButton {
+														svg.icon {
+																font-size: 300%;
+														}
+												}
+										}
+								}
+
+						}
+
+						&.hiddenAnswer {
+								div.question {
+										//										font-size: @biggerFont;
+								}
+								// div.answer {
+								// 		height: 2em;
+								// 		padding: 0;
+								// }
+						}
+
+						&.current {
+								&.hiddenAnswer {
+										div.question {
+												//														font-size: @biggerFont;
+										}
+								}
+
+								&.withAnswer {
+										div.question {
+												div.explanation {
+														color: @otherPlayerFontColor;
+												}
+
+												div.body {
+														color: @otherPlayerFontColor;
+												}
 										}
 								}
 								
+								div.answer {
+										//												font-size: @biggerFont;
+								}
 						}
 						
-						div.navigation {
-								position: sticky;
-								bottom: 0;
-								background-color: white;
-								font-size: 200%;
-								display: flex;
-								justify-content: space-between;
-								align-items: center;
-								margin-top: 0.5em;
+				}
 
-								a {
-										color: inherit;
-								}
+				.player1 {
+						background-color: @t-color-tandem-player1;
+						// &.question {
+						// 		background-color: @t-color-tandem-player1-light;
+						// }
+						// &.answer  {
+						// 		background-color: @t-color-tandem-player1;
+						// }
+				}
 
-								span.left, span.right {
-										width: 40%;
-										// a {
-										// 		color: inherit;
-										// }
-								}
+				.player2 {
+						background-color: @t-color-tandem-player2;
+						// &.question {
+						// 		background-color: @t-color-tandem-player2-light;
+						// }
+						// &.answer {
+						// 		background-color: @t-color-tandem-player2;
+						// }
+				}
 
-								span.left {
-										font-size: 1rem;
-								}
+				div.step2Instructions {
+						.card();
+						//								background-color: @nonGameCardColor;
+						text-align: center;
+						.playerLabel(2rem);
+						span.playerLabel {
+								position: absolute;
+								right: 0.5em;
+								top: 0.5em;
+						}
 
-								span.right {
-										text-align: right;
-								}
 
-								div.toolbar {
-										display: inline;
+				}
 
-										a {
-												margin-left: 0.5em;
+				div.summaryPage {
+						div.summary {
+								.card();
+
+								div.pointsSummary {
+										.uk-margin-top();
+										.uk-margin-bottom();
+										//										background-color: #f0f0f0;
+										div.points {
+												font-size: 200%;
+												margin: 1em 0;
 										}
 								}
+
+								div.summaryButtons {
+										.uk-margin-top();
+										display: flex;
+										justify-content: space-evenly;
+
+										.uk-button {
+												line-height: 2em;
+												width: 40%;
+
+												span.icon {
+														width: 3em;
+												}
+										}
+								}
+
+						}
+
+						div.history {
+								.uk-margin-top();
+								.uk-margin-bottom();
+
+								div.question {
+										background-color: @nonGameCardColor;
+								}
 								
+								div.answer {
+										background-color: lighten(@nonGameCardColor, 5%);
+										margin-bottom: 1em;
+								}
+						}
+						
+				}
+				
+				div.navigation {
+						// position: sticky;
+						// bottom: 0;
+						background-color: white;
+						font-size: 200%;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						margin-top: 0.3em;
+
+						a {
+								color: inherit;
+						}
+
+						span.left, span.right {
+								width: 30%;
+								// a {
+								// 		color: inherit;
+								// }
+						}
+
+						span.left {
+								font-size: 1rem;
+						}
+
+						span.right {
+								text-align: right;
 						}
 
 						div.toolbar {
-//								font-size: 200%;
-//								margin: 1em 0;
-								
-						}
+//								display: inline;
+								display: flex;
+								justify-content: space-between;
+								align-items: center;
 
-						div.testdriveTools {
-								margin-top: 1em;
-						}
+								span.tool {
+										color: #666;
 
-				}
-
-				div.orderItems {
-						ul.orderItemsList {
-								list-style: none;
-								padding: 0;
-						}
-
-						ol.orderItemsList {
-								// // the numbers
-								// li.orderItem {
-								// 		position:relative;
-										
-								// 		&::before {
-								// 				position:absolute;
-								// 				top:0;
-								// 				background-color: green;
-								// 		}
-								// }
+										// + span.tool {
+										// 		margin-left: 1.5em;
+										// }
+								}
 						}
 						
-						ul.orderItemsList, ol.orderItemsList {
-//								list-style: none;
-//								padding: 0;
+				}
 
-								li.orderItem {
-										@pairBorder: 1px solid black;
-										@pad: 0.3em;
+				div.toolbar {
+						//								font-size: 200%;
+						//								margin: 1em 0;
+						
+				}
 
-										&:hover {
-												background-color: #eee;
-										}
+				div.testdriveTools {
+						margin-top: 1em;
+				}
+
+		}
+
+		div.orderItems {
+				ul.orderItemsList {
+						list-style: none;
+						padding: 0;
+				}
+
+				ol.orderItemsList {
+						// // the numbers
+						// li.orderItem {
+						// 		position:relative;
+						
+						// 		&::before {
+						// 				position:absolute;
+						// 				top:0;
+						// 				background-color: green;
+						// 		}
+						// }
+				}
+				
+				ul.orderItemsList, ol.orderItemsList {
+						//								list-style: none;
+						//								padding: 0;
+
+						li.orderItem {
+								@pairBorder: 1px solid black;
+								@pad: 0.3em;
+
+								&:hover {
+										background-color: #eee;
+								}
+								
+								border-top: @pairBorder;
+								&:last-child {
+										border-bottom: @pairBorder;
+								}
+								
+								cursor: move;
+								margin-top: 0;
+								margin-bottom: 0;
+								padding: @pad 0;
+
+								div.orderItemContent {
+
+										display: flex;
+										justify-content: flex-start;
+										align-items: flex-start;
 										
-										border-top: @pairBorder;
-										&:last-child {
-												border-bottom: @pairBorder;
+										div.orderSymbol {
+												// width: 2em;
+												// display: inline-block;
+												flex: 0 0 2rem;
 										}
-										
-										cursor: move;
-										margin-top: 0;
-										margin-bottom: 0;
-										padding: @pad 0;
 
-										div.orderItemContent {
-
-												display: flex;
-												justify-content: flex-start;
-												align-items: flex-start;
-												
-												div.orderSymbol {
-														// width: 2em;
-														// display: inline-block;
-														flex: 0 0 2rem;
-												}
-
-												div.orderContent {
-														//										display: inline-block;
-														//										flex-basis: auto;
-												}
+										div.orderContent {
+												//										display: inline-block;
+												//										flex-basis: auto;
 										}
 								}
 						}
 				}
-
 		}
 }
 
@@ -2257,6 +2383,36 @@ div.backButton {
 				// 		color: #ddd;   
 				// }
 				
+		}
+}
+
+div.zoomBox {
+		padding: 0.3em;
+		margin-top: 0.3em;
+		//		border: 1px solid black;
+		div.header {
+				position: relative;
+				padding: 0.5em 0;
+//				background-color: #999;
+				color: #999;
+				font-size: 85%;
+				text-align: center;
+				//border-bottom: 1px dotted black;
+				
+				span.title {
+						
+				}
+				span.close {
+						font-size: 1.5rem;
+						//				font-weight: bold;
+//						text-align: right;
+						position: absolute;
+						right: 0;
+						top: 2px;
+						a {
+								color: black;
+						}
+				}
 		}
 }
 
@@ -2455,6 +2611,12 @@ div.webui-popover {
 				&.active {
 						background-color: green;
 				}
+		}
+
+		&.hintBalloon {
+				div.webui-popover-content {
+						background-color: yellow;
+				}				
 		}
 }
 
