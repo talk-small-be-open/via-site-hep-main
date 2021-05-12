@@ -1025,7 +1025,8 @@ div.exercise {
 
 				&.error {
 						// border: 2px solid red;
-						color: red;
+						color: orange;
+						//color: red;
 				}
 		}
 		
@@ -2098,6 +2099,7 @@ div.exercise {
 								div.answer {
 										background-color: lighten(@nonGameCardColor, 5%);
 										margin-bottom: 1em;
+										padding-bottom: 1em;
 								}
 						}
 						
@@ -2108,6 +2110,7 @@ div.exercise {
 						// bottom: 0;
 						background-color: white;
 						font-size: 200%;
+						line-height: 1em;
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
@@ -2117,6 +2120,10 @@ div.exercise {
 								color: inherit;
 						}
 
+						span.tool {
+								color: #999;
+						}
+										
 						span.left, span.right {
 								width: 30%;
 								// a {
@@ -2132,19 +2139,25 @@ div.exercise {
 								text-align: right;
 						}
 
+						span.center {
+								display: flex;
+								justify-content: space-between;
+								align-items: auto;
+						}
+
 						div.toolbar {
 //								display: inline;
 								display: flex;
 								justify-content: space-between;
 								align-items: center;
 
-								span.tool {
-										color: #999;
+								// span.tool {
+								// 		color: #999;
 
-										// + span.tool {
-										// 		margin-left: 1.5em;
-										// }
-								}
+								// 		// + span.tool {
+								// 		// 		margin-left: 1.5em;
+								// 		// }
+								// }
 						}
 						
 				}
