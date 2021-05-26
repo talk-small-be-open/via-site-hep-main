@@ -38,9 +38,6 @@
 @t-color-black: #333;
 @t-color-blue: #3a4d98;
 @t-color-red: @t-color-primary;
-@t-color-toccamodule1: #e0be00;
-@t-color-toccamodule2: #85ba6a;
-@t-color-toccamodule3: #5ca9d6;
 @t-color-toccamoduleExtras: @t-color-primary;
 @t-color-tandem-player1: #00eae9;
 @t-color-tandem-player2: #ffa049;
@@ -51,8 +48,14 @@
 @t-color-level-intermediate: #008ed2;
 @t-color-level-mothertongue: @t-color-level-intermediate; // #d48625;
 
-@t-color-vocabolario: #b30061;
-@t-color-palloncini: #009080;
+
+@t-color-toccamodule1: #e0be00;
+@t-color-toccamodule2: #5ab45a;
+@t-color-toccamodule3: #5ca9d6;
+@t-color-vocabolario: #be0050;
+@t-color-palloncini: #97c846;
+
+
 @t-color-highlight: #ffe100;
 @t-color-text: @t-color-black;
 @t-color-background: #d8cec5;
@@ -430,12 +433,40 @@ div.t-header {
 								}
 						}
 
-						div.mainMenuFooter {
-								padding: 1em;
+						div.uk-offcanvas-bar {
+								overflow-y: hidden;
+								
+								div.mainMenuContainer {
+										// position: absolute;
+										// bottom: 0;
+										// top: 0;
+										height: 100%;
+										display: flex;
+										flex-direction: column;
+										justify-content: space-between unsafe;
+										align-items: stretch;
+										overflow-y: auto;
 
-								img.hepLogo {
-										width: 50%;
+										div.mainMenuItems {
+												flex-grow: 1;
+												flex-shrink: 1;
+										}
+										
+										div.mainMenuFooter {
+												// position: absolute;
+												// bottom: 0;
+												padding-top: 2em;
+												flex-grow: 0;
+												flex-shrink: 0;
+
+												img.hepLogo {
+														width: 50%;
+														//										width: @offcanvas-bar-width
+												}
+										}
+
 								}
+								
 						}
 				}
 		}
@@ -737,6 +768,8 @@ div.VIATocModuleExerciser {
 				text-align: center;
 				margin-top: 0.5em;
 				margin-bottom: 1em;
+				padding-left: 0.2em;
+				padding-right: 0.2em;
 
 				.levelColors();
 
@@ -771,36 +804,18 @@ div.VIATocModuleExerciser {
 				margin: 0;
 				cursor: pointer;
 
+				display: flex;
+				justify-content: space-between;
+				align-items: stretch;
+
+
+
+				@ignoredColor: #666;
+				@pad: 0.1em;
+
 				a {
 						color: inherit;
 				}
-
-				.accTitle {
-						padding: 0.5em 0;
-						margin: 0;
-						margin-right: 0.6em;
-						display: inline-block;
-						color: @t-color-blue;
-						text-align: left;
-				}
-
-				&.mothertongue {
-						.accTitle {
-								color: @t-color-level-mothertongue;
-						}
-				}
-
-				span.accIcons {
-						padding: 0.5em 0;
-//						margin-left: 1em;
-						img.iconActivityType {
-								vertical-align: text-top;
-								width: 2em;
-								height: auto;
-						}
-				}
-
-				@ignoredColor: #666;
 				
 				&.ignored {
 						//						background-color: #eee;
@@ -823,38 +838,84 @@ div.VIATocModuleExerciser {
 						}
 				}
 
-				span.accActions {
-						vertical-align: middle;
-						display: inline-block;
-						font-size: 1.5rem;
-						margin: 0.3em 1em;
+				
+				div.left {
+						padding: @pad 0;
+						display: flex;
+						justify-content: flex-start;
+						align-items: flex-start;
+						
+						.accTitle {
+								padding: 0.5em 0;
+								margin: 0;
+								margin-right: 0.6em;
+								display: inline;
+								color: @t-color-blue;
+								text-align: left;
+						}
 
-						a.ignoreTask {
-								svg.fa-toggle-off {
-										color: @ignoredColor;
-								}
-								svg.fa-toggle-on {
-										color: green;
+						// &.mothertongue {
+						// 		.accTitle {
+						// 				color: @t-color-level-mothertongue;
+						// 		}
+						// }
+
+						span.accIcons {
+								padding: 0.5em 0;
+								flex-shrink: 0;
+								
+								//						margin-left: 1em;
+								img.iconActivityType {
+										vertical-align: text-top;
+										width: 2em;
+										height: auto;
 								}
 						}
+						
 				}
 
-				.accToggle {
-						vertical-align: middle;
-						display: inline-block;
-						font-size: 2rem;
+				div.right {
+//						display: flex;
+						white-space: nowrap;
+						flex-shrink: 0;
+						padding: @pad 0;
+						
+						span.accActions {
+								vertical-align: middle;
+								display: inline-block;
+								font-size: 1.5rem;
+								margin: 0.3em 1em;
 
-						// display: inline-flex;
-						// justify-content: space-between;
-						// align-items: center;
+								a.ignoreTask {
+										svg.fa-toggle-off {
+												color: @ignoredColor;
+										}
+										svg.fa-toggle-on {
+												color: green;
+										}
+								}
+						}
+
+						.accToggle {
+								vertical-align: middle;
+								display: inline-block;
+								font-size: 2rem;
+
+								// display: inline-flex;
+								// justify-content: space-between;
+								// align-items: center;
+								
+								// .icon {
+								// 		vertical-align: middle;
+								// }
+								
+								.doOpen {display:inline}
+								.doClose {display:none}
+						}
 						
-						// .icon {
-						// 		vertical-align: middle;
-						// }
-						
-						.doOpen {display:inline}
-						.doClose {display:none}
 				}
+				
+
 		}
 
 		div.hiddenTaskExercise {
@@ -2334,49 +2395,75 @@ ul.modulesList {
 				// 		font-weight: bold;
 				// }
 
-				a.gotoModule {
-						//						white-space: nowrap;
+				div.moduleEntry {
 						display: flex;
 						justify-content: flex-start;
 						align-items: flex-start;
-				}
-				
-				span.indexCode {
-						display: inline-block;
-						width: 2.5em;
-//						font-weight: normal;
-				}
 
-				span.level {
-						width: 2em;
-						display: inline-block;
-						position: relative;
-						top: 2px; // Optical centering
-						img.level {
-								height: 1em;
-								vertical-align: baseline;
+						@pad: 0.5em;
+						
+						a.gotoModule {
+								//						white-space: nowrap;
+								display: flex;
+								justify-content: flex-start;
+								align-items: flex-start;
+								flex-grow: 9;
+								padding: @pad 3px;
+
+								span.indexCode {
+										display: inline-block;
+										width: 2.5em;
+										flex-shrink: 0;
+										//						font-weight: normal;
+								}
+
+								span.level {
+										width: 2em;
+										flex-shrink: 0;
+										display: inline-block;
+										position: relative;
+										top: 2px; // Optical centering
+										img.level {
+												height: 1em;
+												vertical-align: baseline;
+										}
+								}
+
+								span.moduleTitle {
+										flex-grow: 0;
+										flex-basis: auto;
+										// display: inline-block;
+										// width: auto;
+								}
+
+
 						}
-				}
+						
+						
+						span.moduleStatus {
+								flex-grow: 1;
+								flex-shrink: 0;
+//								margin-top: 0.2em;
+								color: black;
+								text-align: right;
+								// float: right;
+								padding: @pad 0;
 
-				span.moduleTitle {
-						// display: inline-block;
-						// width: auto;
-				}
-				
-				span.moduleStatus {
-						margin-top: 0.2em;
-						color: black;
-						float: right;
-				}
+								// Shitty little pixels offsets!
+								> * {
+										vertical-align: bottom;
+								}
+						}
 
-				span.betatesterSign {
-						display: inline-block;
-						margin-left: 0.5em;
-						margin-right: 0.5em;
-						color: green;
-						font-size: 80%;
-						position: relative;
-						top: -0.5em;
+						span.betatesterSign {
+//								display: inline-block;
+								margin-left: 0.5em;
+								margin-right: 0.5em;
+								color: green;
+								font-size: 80%;
+								position: relative;
+								top: -0.5em;
+						}
 				}
 
 				// span.duration {
@@ -2474,11 +2561,12 @@ div.VIATocMyPortfolioComponent {
 		}
 
 		a.deleteAction {
-				margin-top: 0.3em;
-				margin-left: 1em;
+//				margin-top: 0.3em;
+				margin-right: 1em;
+//				flex-shrink: 0;
 //				color: black;
-				float: right;
-				vertical-align: bottom;
+//				float: right;
+//				vertical-align: bottom;
 		}
 		
 }
@@ -2632,11 +2720,12 @@ div.webui-popover {
 				}
 		}
 
-		&.hintBalloon {
-				div.webui-popover-content {
-						background-color: yellow;
-				}				
-		}
+		// &.webui-popover-hintBalloon {
+		// 		background-color: yellow;
+		// 		// div.webui-popover-content {
+		// 		// 		background-color: yellow;
+		// 		// }				
+		// }
 }
 
 
