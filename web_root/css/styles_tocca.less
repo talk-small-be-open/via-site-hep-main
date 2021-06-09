@@ -64,9 +64,9 @@
 
 @t-header-height:             4rem;
 @t-header-background:         @t-color-black;
-@t-header-small-background:   @t-color-black;
-@t-header-shadow-sticky:      0 0 50px 1px rgba(0,0,0,0.2);
-@t-header-shadow-teaser:      0 0 150px 1px rgba(0,0,0,0.5);
+// @t-header-small-background:   @t-color-black;
+// @t-header-shadow-sticky:      0 0 50px 1px rgba(0,0,0,0.2);
+// @t-header-shadow-teaser:      0 0 150px 1px rgba(0,0,0,0.5);
 @t-header-padding:            0;
 
 
@@ -225,6 +225,32 @@ div.pillarParagraph {
 				margin: 0.5em;
 				border: 1px solid black;
 		}
+
+		// Custom paragraph styles, used with pillar syntax @@style blablabl
+		.dialogA {
+				color: lighten(@t-color-black, 25%);
+		}
+
+		.dialogB {
+				color: lighten(@t-color-black, 50%);
+		}
+
+		.dialogC {
+				color: lighten(@t-color-black, 60%);
+		}
+		
+		&.dialogA {
+				.dialogA();
+		}
+
+		&.dialogB {
+				.dialogB();
+		}
+
+		&.dialogC {
+				.dialogC();
+		}
+
 }
 
 .levelColors() {
@@ -564,7 +590,7 @@ div.VIAToccaStartComponent {
 div.VIAModuleFinderComponent {
 
 //		max-width: 50em;
-		margin-top: 0.5em;
+		padding-top: 1em;
 
 		.goButton() {
 				background-color: red;
@@ -681,11 +707,15 @@ div.VIAModuleFinderComponent {
 				}
 		}
 
-		div.VIAModulesListComponent {
-				margin-top: 1em;
-		}
+		// div.VIAModulesListComponent {
+		// 		margin-top: 1em;
+		// }
 				
 
+}
+
+div.VIAModulesListComponent {
+		padding-top: 1em;
 }
 
 
@@ -693,9 +723,13 @@ div.VIATocModuleExerciser {
 
 		// Header gets units background color
 //		.toccamoduleBackgroundColor("h1.moduleNavigation, div.moduleBottomNavigation");
-		.toccamoduleBackgroundColor("h1.moduleNavigation");
+		.toccamoduleBackgroundColor("div.moduleNavigation");
 		
-		h1.moduleNavigation {
+		div.moduleNavigation {
+				// font-size: @base-h1-font-size;
+				// //line-height: 1.2em;
+				// font-weight: 600;
+
 				margin: 0;
 				color: white;
 				text-align: center;
@@ -718,15 +752,30 @@ div.VIATocModuleExerciser {
 				}
 
 				span.left {
+						font-size: @base-h1-font-size;
+//						line-height: @base-h1-line-height;
 						text-align: left;
 						display: inline-block;
-						width: 3em;						
+						width: 3em;
+						padding-left: 0.2em;
+
+						// a.uk-button {
+						// 		vertical-align: top;
+						// }
 				}
 
+				span.center {
+						font-size: @base-h1-font-size;
+						line-height: @base-h1-line-height;
+						font-weight: 600;
+						display: inline-block;
+				}
+				
 				span.right {
 						text-align: right;
 						display: inline-block;
 						width: 3em;						
+						padding-right: 0.2em;
 				}
 				
 				span.arrow {
@@ -793,13 +842,20 @@ div.VIATocModuleExerciser {
 
 		div.moduleBody {
 				margin: 0 0.5em;
+				padding-bottom: 1em;
 		}
 
 		// Accordion top line
-		div.accBar {
+
+		.fatLineDivider() {
 				border-top-width: 2px;
 				border-top-style: solid;
 				border-top-color: #333;
+		}
+
+
+		div.accBar {
+				.fatLineDivider();
 //				padding: 1em 0;
 				margin: 0;
 				cursor: pointer;
@@ -854,11 +910,6 @@ div.VIATocModuleExerciser {
 								text-align: left;
 						}
 
-						// &.mothertongue {
-						// 		.accTitle {
-						// 				color: @t-color-level-mothertongue;
-						// 		}
-						// }
 
 						span.accIcons {
 								padding: 0.5em 0;
@@ -872,6 +923,14 @@ div.VIATocModuleExerciser {
 								}
 						}
 						
+				}
+
+				&.mothertongue {
+						div.left {
+								.accTitle {
+										color: @t-color-level-mothertongue;
+								}
+						}
 				}
 
 				div.right {
@@ -918,8 +977,13 @@ div.VIATocModuleExerciser {
 
 		}
 
-		div.hiddenTaskExercise {
-				.hiddenSectionButWithDefinedDimension();
+		div.taskExercise {
+				&.hiddenTaskExercise {
+						.hiddenSectionButWithDefinedDimension();
+				}
+				+ .noTitleTaskExercise {
+						.fatLineDivider();
+				}
 		}
 
 		// div.teacherMenu {
@@ -934,7 +998,7 @@ div.VIATocModuleExerciser {
 div.VIATocTaskExerciser {
 		padding-left: 0.2em;
 		padding-right: 0.2em;
-		margin-bottom: 3em;
+		margin-bottom: 2em;
 }
 
 // Not inside the VIATocModuleExerciser, because it could be stand alone (e.g. in the backend testdrive)
@@ -2296,6 +2360,31 @@ div.exercise {
 								}
 						}
 				}
+		}
+
+		div.hintBox {
+				display: flex;
+				align-items: flex-end;
+				flex-direction: column;
+				margin: 2px 0 5px 0;
+				
+				span.hintBoxToggler {
+						cursor: pointer;
+						border: 1px solid #999;
+						padding: 0 2px;
+						font-size: 70%;
+						line-height: 1.5em;
+				}
+				div.uk-alert {
+						//width: 100%;
+						margin-top: 5px;
+						align-self: stretch;
+
+						h3 {
+								margin-top: 5px;
+						}
+				}
+				
 		}
 }
 

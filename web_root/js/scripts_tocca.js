@@ -95,7 +95,7 @@ function textinput_markAsEmpty(event, elementId) {
 // Select many
 
 function selectmany_preventTooManyChecks(regionId, buttonId, number, message) {
-	if ($('#'+regionId+' input:checkbox:checked').length > number) {
+	if ((number > 0) && ($('#'+regionId+' input:checkbox:checked').length > number)) {
 		alert(message);
 		return false;
 	}
