@@ -340,12 +340,31 @@ div.t-header {
 		nav {
 				height: @t-header-height;
 
-				div.uk-navbar-left {
-						padding-left: 0.5em;
-				}
+				// div.uk-navbar-left {
+				// 		padding-left: 0.5em;
+				// }
 				
 				&.t-menubar {
 
+						// div.menubarCenter {
+						// 		.uk-navbar-center();
+						// }
+
+						display: flex;
+						justify-content: space-between;
+
+						div.menubarLeft {
+								display: flex;
+								align-items: center;
+								padding-left: 0.5em;
+						}
+						div.menubarCenter {
+								
+						}
+						div.menubarRight {
+								
+						}
+						
 						ul.uk-navbar-nav {
 								height: @t-header-height;
 
@@ -772,6 +791,7 @@ div.VIATocModuleExerciser {
 				}
 				
 				span.right {
+						font-size: @base-h1-font-size;
 						text-align: right;
 						display: inline-block;
 						width: 3em;						
@@ -2369,6 +2389,7 @@ div.exercise {
 				margin: 2px 0 5px 0;
 				
 				span.hintBoxToggler {
+						.uk-text-muted();
 						cursor: pointer;
 						border: 1px solid #999;
 						padding: 0 2px;

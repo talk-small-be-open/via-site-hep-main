@@ -409,7 +409,7 @@
             <hashTree/>
             <HtmlExtractor guiclass="HtmlExtractorGui" testclass="HtmlExtractor" testname="CSS Selector Extractor" enabled="true">
               <stringProp name="HtmlExtractor.refname">link-unit1</stringProp>
-              <stringProp name="HtmlExtractor.expr">.bigButton.toccaModule1</stringProp>
+              <stringProp name="HtmlExtractor.expr">div.unitas .bigButton.toccamodule1</stringProp>
               <stringProp name="HtmlExtractor.attribute">href</stringProp>
               <stringProp name="HtmlExtractor.default"></stringProp>
               <boolProp name="HtmlExtractor.default_empty_value">false</boolProp>

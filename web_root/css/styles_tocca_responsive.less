@@ -1,7 +1,7 @@
 // UI Breakpoints
 
 
-// Not small phones
+// Not small phones =======================================================================================
 @media (min-width: @breakpoint-medium) {
 		body.loggedIn {
 				div.core {
@@ -11,7 +11,7 @@
 		
 }
 
-// Only small phones
+// Only small phones =====================================================================================
 @media (max-width: @breakpoint-small-max) {
 
 		@t-header-height-small: @t-header-height * 0.8;
@@ -46,6 +46,13 @@
 								ul.uk-navbar-nav {
 										height: @t-header-height-small;
 								}
+
+								// div.menubarCenter {
+								// 		position: static;
+								// 		top: 0;
+								// 		left: 0;
+								// 		transform: none;
+								// }
 						}
 				}
 
@@ -68,7 +75,7 @@
 		
 }
 
-// Not large screens
+// Not large screens ==============================================================================================
 @media (max-width: @breakpoint-large) {
 
 		body {
@@ -84,7 +91,7 @@
 		}
 }
 
-// Only large screens
+// Only large screens ============================================================================================
 @media (min-width: @breakpoint-large) {
 
 		@backgroundcolor: #EFEBE8;
