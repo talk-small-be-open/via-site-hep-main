@@ -142,13 +142,37 @@ body {
 		}
 
 		div.footer {
-				padding: 0.5em 1em;
-//				background-color: inherit;
+				padding: 40px 50px;
+				background-color: @t-color-black;
+				color: white;
 
-				img.hepLogo {
-						vertical-align: bottom; 
-						width: 4em;
+				a {
+						color: white;
 				}
+
+				div.company {
+						margin-bottom: 2em;
+						img.hepLogo {
+								vertical-align: top;
+								width: 230px;
+						}
+						
+						div.address {
+								font-size: 18px;
+								line-height: 28px;
+								margin-top: 2em;
+						}
+						
+				}
+
+				div.footerMenu {
+						a + a {
+								margin-left: 2em;
+						}
+				}
+
+
+				
 		}
 
 
@@ -232,11 +256,11 @@ div.pillarParagraph {
 		}
 
 		.dialogB {
-				color: lighten(@t-color-black, 50%);
+				color: @t-color-tandem-player1;
 		}
 
 		.dialogC {
-				color: lighten(@t-color-black, 60%);
+				color: @t-color-tandem-player2;
 		}
 		
 		&.dialogA {
@@ -372,7 +396,7 @@ div.t-header {
 								li {
 										padding-top: 1em;
 
-										&.active {
+										&.active, &.activeHome {
 												//										background-color: @t-color-toccamodule1;
 												border-bottom-width: 8px;
 												border-bottom-style: solid;
@@ -384,6 +408,15 @@ div.t-header {
 														
 												// }
 												
+										}
+
+										// The Home-Icon does not get the module color, but the primary color
+										&.activeHome {
+												border-color: @t-color-primary;
+												a svg {
+														stroke: @t-color-primary;
+														fill: @t-color-primary;
+												}
 										}
 								}
 								span.svg-icon {
@@ -945,7 +978,7 @@ div.VIATocModuleExerciser {
 						
 				}
 
-				&.mothertongue {
+				&.mothertongue, &.facoltativo {
 						div.left {
 								.accTitle {
 										color: @t-color-level-mothertongue;
@@ -1424,9 +1457,10 @@ div.exercise {
 				}
 		}
 
-		div.youtubePlayer, div.vimeoPlayer {
+		div.youtubePlayer, div.vimeoPlayer, div.srgVideoPlayer {
 				position: relative;
 				width: 100%; // Can be reduced by responsive rules
+				max-width: 100%;
 
 				> div.aspectRatioBox {
 						position: relative;
