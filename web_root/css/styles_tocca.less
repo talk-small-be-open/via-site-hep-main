@@ -165,11 +165,11 @@ body {
 						
 				}
 
-				div.footerMenu {
-						a + a {
-								margin-left: 2em;
-						}
-				}
+				// div.footerMenu {
+				// 		a + a {
+				// 				margin-left: 2em;
+				// 		}
+				// }
 
 
 				
@@ -381,9 +381,21 @@ div.t-header {
 								display: flex;
 								align-items: center;
 								padding-left: 0.5em;
+								padding-right: 0.5rem;
 						}
 						div.menubarCenter {
 								
+								// &.activeHome {
+								// 		border-color: @t-color-primary;
+								// 		a svg {
+								// 				stroke: @t-color-primary;
+								// 				fill: @t-color-primary;
+								// 		}
+								// }
+								li a span.menuLabel {
+										margin-left: 0.1em;
+								}
+
 						}
 						div.menubarRight {
 								
@@ -495,13 +507,18 @@ div.t-header {
 						ul.uk-nav {
 								li {
 										a {
-//												color: white;
+												//												color: white;
+												white-space: nowrap;
 
 												span.svg-icon, svg.svg-inline--fa.icon {
 														text-align: center;
 														display: inline-block;
 														width: 1.5rem;
 														//height: 1rem;
+												}
+
+												span.menuEntryText {
+														.uk-text-truncate();
 												}
 										}
 
@@ -556,6 +573,13 @@ div.inputDialog {
 				width: 100%;
 				font-size: 120%;
 				margin: 1em 0;
+		}
+}
+
+div.VIAConfirmationComponent {
+		button {
+				min-width: 5em;
+				margin-right: 1em;
 		}
 }
 
