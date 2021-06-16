@@ -355,6 +355,21 @@ function processHtmlDocument(contextElement) {
 	}
 }
 
+// Scroll a given task title to the nice top position
+function scrollToExerciseTask(taskTitleElement) {
+	
+	const navElement = $(taskTitleElement).closest('div.VIATocModuleExerciser').find('div.moduleNavigation').get(0);
+	const rect = navElement.getBoundingClientRect();
+	const targetPosition = rect.top + rect.height + 5;
+	const elementPosition = $(taskTitleElement).offset().top;
+
+//	console.log(targetPosition);
+	
+	window.scroll({behavior: 'smooth', top: (elementPosition - targetPosition) });
+
+}
+
+
 /* Haupt JS init */
 $(document).ready(function(){
 

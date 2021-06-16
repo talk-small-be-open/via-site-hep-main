@@ -122,19 +122,46 @@ a.bigButton {
 		.toccamoduleColorProperty(@selector, "color");
 }
 
-.toccamoduleButton(@selector){
+.toccamoduleButton(@selector, @inverseColor: white, @isInversed: false){
 		@s: e(@selector); // converting the incoming string as a literal (strange less behaviour)
-
+		
 		.style(@localColor) {
-				border-color: @localColor;
-				color: @localColor;
-				background-color: white;
 
-				&:hover, &:active {
-						background-color: @localColor;
-						color: white;
+				@color1: if(@isInversed, @inverseColor, @localColor);
+				@color2: if(@isInversed, @localColor, @inverseColor);
+
+				background-color: @color2;
+				border-color: if(@isInversed, @color2, @color1);
+				color: @color1;
+				
+				// border-color: ;
+				// color: ;
+				// background-color: white;
+
+
+				&:active, &.active {
+						background-color: @color1;
 						text-decoration: none;
+						color: @color2;
 				}
+
+				&:hover {
+						background-color: @color1;
+						text-decoration: none;
+						color: @color2;
+//						border-color: if(@isInversed, @color2, @color1);
+				}
+
+				&.active:hover {
+						background-color: lighten(@color1, 20%);
+				}
+
+				
+				// &:hover, &:active {
+				// 		background-color: @localColor;
+				// 		color: white;
+				// 		text-decoration: none;
+				// }
 
 		}
 
