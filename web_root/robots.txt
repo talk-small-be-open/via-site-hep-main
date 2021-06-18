@@ -1,0 +1,13 @@
+# Disallow all and everything, since this is an app
+User-agent: *
+Disallow: /
+
+User-agent: *
+Disallow: /files/
+
+User-agent: *
+Disallow: /app?*
+
+Crawl-delay: 10
+
+#TBD: Insert automatic updates from a bad bots blocker
