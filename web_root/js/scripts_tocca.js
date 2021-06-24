@@ -189,5 +189,9 @@ $(document).ready(function(){
 	// setLazy();
 	// lazyLoad();
 	// $(window).on('scroll', lazyLoad);
-	
+
+	preventBackButton(function(){
+//TODO nice message		alert('No back function available');
+	});
+
 });
