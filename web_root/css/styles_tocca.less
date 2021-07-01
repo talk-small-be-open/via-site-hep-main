@@ -255,7 +255,7 @@ div.pillarParagraph {
 				border: 1px solid black;
 		}
 
-		// Custom paragraph styles, used with pillar syntax @@style blablabl
+		// Custom styles, used with pillar syntax ((style blablabl))
 		.dialogA {
 				color: lighten(@t-color-black, 25%);
 		}
@@ -267,7 +267,13 @@ div.pillarParagraph {
 		.dialogC {
 				color: @t-color-tandem-player2;
 		}
+
+		.noWrap {
+				white-space: nowrap;
+		}
+
 		
+		// Custom paragraph styles, used with pillar syntax @@style blablabl
 		&.dialogA {
 				.dialogA();
 		}
@@ -279,6 +285,7 @@ div.pillarParagraph {
 		&.dialogC {
 				.dialogC();
 		}
+
 
 }
 
@@ -1764,9 +1771,11 @@ div.exercise {
 		div.highlightAreas {
 
 				@highlightColor: lighten(@t-color-selection, 20%);
+				background-color: white;
 				
 				.noUserSelect();
-				.noTouch();
+//				.noTouch();
+				touch-action: pan-y;
 				letter-spacing: 0.1em;
 				.spaced();
 				.framed();
@@ -1786,11 +1795,13 @@ div.exercise {
 				
 				span.selChar {
 						cursor: url('/images/horizontal-text-select.cur'), text;
+						background-color: white;
 						&.highlighted {
 								background-color: @highlightColor;
 								color: white;
 								padding-top: 1px;
-								cursor: pointer;
+//								cursor: pointer;
+								cursor: url('/images/selection-remove.cur'), pointer;
 
 								// &.touchedNow {
 								// 		background-color: @highlightColor;
