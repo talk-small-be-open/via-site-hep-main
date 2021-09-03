@@ -2823,8 +2823,10 @@ div.VIATocRegisterComponent {
 // Demo
 // ===========================================
 
+@demoColor: #fffd37;
+
 span.uk-label.demoLabel {
-		background-color: #fffd37;
+		background-color: @demoColor;
 		color: #000000;
 		border: 1px solid #ccc;
 		transform: rotate(-10deg);
@@ -2839,6 +2841,29 @@ span.uk-label.demoLabel {
 div.VIADemoUnitComponent {
 		span.uk-label.demoLabel {
 				margin-left: 0.2em;
+		}
+}
+
+div.demoRibbon {
+		@dim: 20em;
+		
+		position: fixed;
+		width: @dim;
+		height: @dim;
+		bottom: -(@dim/1.8);
+		right: -(@dim/1.9);
+		padding-top: 1em;
+		transform-origin: center;
+		transform: rotate(-45deg);
+		z-index: 999999; 
+
+		div.ribbonText {
+				width: 100%;
+				text-align: center;
+				border-top: 1px solid black;
+				padding: 0.3em 1em 10em 1em;
+				background: @demoColor;
+				color: black;
 		}
 }
 
