@@ -989,6 +989,21 @@ div.VIATocModuleExerciser {
 						display: flex;
 						justify-content: flex-start;
 						align-items: flex-start;
+
+						span.level {
+								width: 2em;
+								padding-top: 0.2em;
+								flex-shrink: 0;
+								align-self: center;
+								display: inline-block;
+								// position: relative;
+								// top: 2px; // Optical centering
+								img.level {
+										height: 1em;
+										vertical-align: baseline;
+								}
+						}
+
 						
 						.accTitle {
 								padding: 0.5em 0;
@@ -1944,7 +1959,8 @@ div.exercise {
 						// 										border-radius: 50%;
 						// //										vertical-align: middle;
 						// //										line-height: @circleSize;
-						
+
+						// Defined outside, could be standalone
 						span.playerChar {
 								display: inline-block;
 								//font-size: @circleSize;
@@ -1963,21 +1979,27 @@ div.exercise {
 								marging-top: -0.05em;
 
 						}
+
 						span.playerLabel {
-								span.playerIsMe {
-										display: inline-block;
-										background-color: #fffd37;
-										color: #000000;
-										border: 1px solid #ccc;
-										border-radius: 0.5em;
-										//transform: rotate(-20deg);
-										font-size: 0.7rem;
-										font-weight: normal;
-										padding-left: 0.3em;
-										padding-right: 0.3em;
-										position: absolute;
-										left: -40%;
-										top: -20%;
+
+								span.playerLabelContent {
+										position: relative;
+
+										span.playerIsMe {
+												display: inline-block;
+												background-color: #fffd37;
+												color: #000000;
+												border: 1px solid #ccc;
+												border-radius: 0.5em;
+												//transform: rotate(-20deg);
+												font-size: 0.7rem;
+												font-weight: normal;
+												padding-left: 0.3em;
+												padding-right: 0.3em;
+												position: absolute;
+												left: -40%;
+												top: -20%;
+										}
 								}
 						}
 				}
@@ -2084,13 +2106,26 @@ div.exercise {
 								z-index: 10;
 
 								span.playerLabel {
-										position: absolute;
-										right: 0.5em;
-										top: 0.5em;
+										float: right;
+										margin-bottom: 0.5em;
+										margin-left: 0.3em;
+										//position: absolute;
+										// right: 0.5em;
+										// top: 0.5em;
 								}
 
 
 								div.explanation {
+										margin-top: 1em;
+										margin-bottom: 1em;
+
+										div.audioPlayer {
+												display: inline-block;
+												width: 80%;
+										}
+								}
+
+								div.body {
 										margin-top: 1em;
 										margin-bottom: 1em;
 								}
@@ -2119,6 +2154,9 @@ div.exercise {
 								//font-size: @biggerFont;
 
 								span.playerLabel {
+										// float: right;
+										// margin-bottom: 0.5em;
+										// margin-left: 0.3em;
 										position: absolute;
 										right: 0.5em;
 										top: 1.2em;
