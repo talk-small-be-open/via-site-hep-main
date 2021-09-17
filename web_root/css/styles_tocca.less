@@ -45,8 +45,8 @@
 // @t-color-tandem-player2-light: lighten(@t-color-tandem-player2, 10%);
 
 @t-color-level-normal: @t-color-blue;
-@t-color-level-intermediate: #008ed2;
-@t-color-level-mothertongue: @t-color-level-intermediate; // #d48625;
+@t-color-level-intermediate: @t-color-blue;
+@t-color-level-mothertongue: #008ed2; // #d48625;
 
 
 @t-color-toccamodule1: #e0be00;
@@ -1029,7 +1029,8 @@ div.VIATocModuleExerciser {
 						
 				}
 
-				&.mothertongue, &.facoltativo {
+				//&.facoltativo
+				&.mothertongue  {
 						div.left {
 								.accTitle {
 										color: @t-color-level-mothertongue;
