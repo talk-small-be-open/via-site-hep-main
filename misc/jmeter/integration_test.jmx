@@ -115,8 +115,9 @@
           <collectionProp name="Arguments.arguments">
             <elementProp name="userPassword" elementType="Argument">
               <stringProp name="Argument.name">userPassword</stringProp>
-              <stringProp name="Argument.value">s834thsdgjh34t8qwfhsdvhqjq2348wjhasdfjhf2</stringProp>
+              <stringProp name="Argument.value">none</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">Dont save this file with the real password</stringProp>
             </elementProp>
             <elementProp name="userEmail" elementType="Argument">
               <stringProp name="Argument.name">userEmail</stringProp>

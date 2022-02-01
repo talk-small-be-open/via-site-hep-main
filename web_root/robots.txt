@@ -8,6 +8,7 @@ Disallow: /files/
 User-agent: *
 Disallow: /app?*
 
-Crawl-delay: 10
+User-agent: *
+Disallow: /app/sso?*
 
-#TBD: Insert automatic updates from a bad bots blocker
+Crawl-delay: 10
