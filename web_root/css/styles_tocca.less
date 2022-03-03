@@ -268,6 +268,15 @@ div.pillarParagraph {
 				color: @t-color-tandem-player2;
 		}
 
+		.dialogD {
+				color: #3a4d98;
+		}
+		
+		.dialogE {
+				color: #9ba5c8; // oder eher #5674EB
+		}
+
+		
 		.noWrap {
 				white-space: nowrap;
 		}
@@ -286,7 +295,14 @@ div.pillarParagraph {
 				.dialogC();
 		}
 
+		&.dialogD {
+				.dialogD();
+		}
 
+		&.dialogE {
+				.dialogE();
+		}
+		
 }
 
 .levelColors() {
@@ -1122,6 +1138,7 @@ div.exercise {
 		// General wrapping styles for backend usage
 		.spaced {
 				letter-spacing: 0.1em;
+				line-height: 1.6em;
 		}
 		.framed {
 				padding: 10px;
