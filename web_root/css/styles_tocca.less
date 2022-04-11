@@ -1829,12 +1829,12 @@ div.exercise {
 				div.pillarParagraph:first-child {
 						margin-top: 0;
 				}
-				
+
 				span.selChar {
 						cursor: url('/images/horizontal-text-select.cur'), text;
 						background-color: white;
 						&.highlighted {
-								background-color: @highlightColor;
+								background-color: @highlightColor; // redundant
 								color: white;
 								padding-top: 1px;
 //								cursor: pointer;
@@ -1849,8 +1849,37 @@ div.exercise {
 								color: white;
 								background-color: @t-color-selection !important;
 						}
+
+						// // Should be stronger than "highlighted" above
+						// &.highlightedNow {
+						// 		background-color: @highlightColor;
+						// }
+
 				}
 
+
+				// If not first take, then we need to show correction. All highlighted elements are wrong
+				// except the ones which are in a correct highlight area
+				// A bit dirty, but OK
+				&.checked {
+						span.selChar {
+								&.highlighted {
+										background-color: @wrongColor;
+								}
+
+								// Should be stronger than "highlighted" above
+								&.highlightedNow {
+										background-color: @highlightColor;
+								}
+						}
+				}
+				// &:not(.checked) {
+				// 		span.selChar.highlighted {
+				// 				background-color: @highlightColor;
+				// 		}
+				// }
+
+				
 				span.highlightArea.correct {
 						span.selChar.highlighted {
 								color: unset;
@@ -1858,11 +1887,7 @@ div.exercise {
 						}
 				}
 
-				// &.firstTake {
-				// 		span.selChar.highlighted {
-				// 				background-color: @highlightColor;		
-				// 		}
-				// }
+
 		}
 
 		div.taskGroup {
