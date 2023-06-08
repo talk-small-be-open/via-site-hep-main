@@ -1566,6 +1566,8 @@ div.exercise {
 		}
 
 		div.imageDisplayer {
+				margin-top: 0.5em;
+				margin-bottom: 0.5em;
 				span.image {
 						display: inline-block;
 						text-align: right;
@@ -1719,12 +1721,16 @@ div.exercise {
 						
 						span.hintSymbol {
 								float:left;
-								margin-left: -20px;
-								margin-top: 10px;
+								// margin-left: -20px;
+								// margin-top: 10px;
+								margin-top: 0;
+								margin-bottom: 0;
 						}
 						
 						div.leftObject {
 								display: table-cell;
+								min-width: 20%;
+								background-clip: padding-box;
 								border: @pairBorder;
 								padding: 3px 22px 5px 10px;
 								cursor: pointer;
@@ -1742,6 +1748,7 @@ div.exercise {
 
 						div.rightObject {
 								display: table-cell;
+								background-clip: padding-box;
 								border: @pairBorder;
 								padding: 3px 10px 5px 10px;
 								cursor: pointer;
