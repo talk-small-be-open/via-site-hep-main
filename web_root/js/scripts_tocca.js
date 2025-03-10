@@ -164,7 +164,9 @@ function processHtmlDocument(contextElement) {
 	$('.popover', contextElement).webuiPopover({trigger:'hover', placement:'auto'});
 	$('span.dictionaryEntry', contextElement).webuiPopover({trigger:'hover', placement:'auto-top'});
 
-  $('textarea', contextElement).autosize();
+  if ($.fn.autosize) {
+    $('textarea', contextElement).autosize();
+  }
 
 	if ( ! (typeof JoelPurra === 'undefined') ) {
 		$('input.clozeTextPlaceholder', contextElement).plusAsTab();

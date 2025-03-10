@@ -1,3 +1,5 @@
+// out: styles_tocca.css, rewrite-urls: all, clean-css: --s1, silent
+
 //
 // Styles for hep tocca
 //
@@ -1111,15 +1113,31 @@ div.VIATocModuleExerciser {
 				}
 		}
 
+    &.VIATocTeacherViewModuleExerciser {
+      // prevent user interaction, is view only
+      pointer-events: none;
+
+      // ...except in explicit teacher regions
+      div.teacherInteraction {
+        background-color: yellow;
+        padding: 5px;
+        border: 2px solid gray;
+        pointer-events: auto;
+        margin: 0.5em 0;
+
+      }
+    }
+
+
 		// div.teacherMenu {
 		// 		font-size: 80%;
 		// 		margin: 0.5em;
 		// }
 
-		// Exercise displayer for every task (in a module)
 }
 
 
+// Exercise displayer for every task (in a module)
 div.VIATocTaskExerciser {
 		padding-left: 0.2em;
 		padding-right: 0.2em;
@@ -2588,6 +2606,32 @@ div.exercise {
 				}
 				
 		}
+
+
+		div.textMemoBox {
+				background-color: #eee;
+				padding: 1em;
+				.textMemo {
+						width: 100%;
+						margin-top: 1em;
+						padding: 1em;
+						border: 1px solid #666;
+						background-color: #fefefe;
+						box-sizing: border-box;
+						resize: none;
+				}
+        label.needsTeacher {
+          display: block;
+          margin: 0.3em 0;
+        }
+        input {
+          margin: 0.3em 0;
+          &[type=text] {
+            width: 100%;
+            box-sizing: border-box;
+          }
+        }
+		}
 }
 
 
@@ -2814,7 +2858,7 @@ div.zoomBox {
 		}
 }
 
-div.VIATocMyProfileComponent, div.VIATocTeacherMyCockpit, div.VIATocMyPortfolioComponent {
+div.VIATocMyProfileComponent, div.VIATocTeacherCockpit, div.VIATocMyPortfolioComponent {
 
 		padding-top: 1em;
 
@@ -2832,13 +2876,19 @@ div.VIATocMyProfileComponent, div.VIATocTeacherMyCockpit, div.VIATocMyPortfolioC
 		
 }
 
-div.VIATocTeacherMyCockpit {
+div.VIATocTeacherCockpit {
 
 		.invitationCode {
 				font-family: monospace;
 				font-size: 120%;
 				border: 1px solid black;
 		}
+
+    table {
+      tr.average {
+        background-color: lightyellow;
+      }
+    }
 }
 
 div.VIATocMyPortfolioComponent {
@@ -2913,6 +2963,35 @@ div.VIATocRegisterComponent {
 				font-weight: bold;
 		}
 }
+
+// Colorized progress icons
+span.svg-icon.progress {
+  color: #333;
+}
+
+span.correctness {
+  .correctnessColor(@correctness, @color) {
+    &.correctness@{correctness} {
+      span.svg-icon.progress {
+        color: @color;
+      }
+    }
+  }
+
+  .correctnessColor(0, revert);
+  .correctnessColor(10, red);
+  .correctnessColor(20, red);
+  .correctnessColor(30, red);
+  .correctnessColor(40, orange);
+  .correctnessColor(50, orange);
+  .correctnessColor(60, orange);
+  .correctnessColor(70, orange);
+  .correctnessColor(80, green);
+  .correctnessColor(90, green);
+  .correctnessColor(100, green);
+}
+
+
 
 // ===========================================
 // Demo
