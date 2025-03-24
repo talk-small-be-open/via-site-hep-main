@@ -2884,12 +2884,103 @@ div.VIATocTeacherCockpit {
 				border: 1px solid black;
 		}
 
-    table {
-      tr.average {
-        background-color: lightyellow;
+
+
+    // header,
+    // footer {
+      //   display: flex;
+      //   flex-direction: column;
+      //   align-items: center;
+      //   justify-content: center;
+      //   padding: 0 1rem;
+    // }
+    //
+    // header h1,
+    // footer h1 {
+      //   margin: 0;
+      //   font-size: 20px;
+      //   font-weight: 500;
+    // }
+    //
+    // header p {
+      //   margin: 0;
+    // }
+    //
+    // header {
+      //   height: 60px;
+    // }
+    //
+    // footer {
+      //   height: 40px;
+    // }
+
+    .scrollingTableContainer {
+      overflow-x: auto;
+      // height: calc(100vh - 100px); /* full height minus header and footer */
+      // border: 1px solid #ccc;
+
+
+      // table {
+        //   width: 100%;
+        //   border-collapse: separate;
+        //   border-spacing: 0;
+      // }
+      table {
+        tr.average {
+          background-color: lightyellow;
+        }
+
+        thead {
+          position: sticky;
+          z-index: 2;
+          top: 0;
+        }
+
+        th,
+        td {
+          padding: 10px;
+          white-space: nowrap;
+          // border-right: 1px solid #ccc;
+          // border-bottom: 1px solid #ccc;
+        }
+
+        td.sticky,
+        th.sticky {
+          z-index: 1;
+          position: sticky;
+          left: 0;
+          background: white;
+          border-right: 2px solid #ccc;
+        }
+
+        th.sticky {
+          background: white;
+        }
+
+        // th {
+          //   text-align: left;
+          //   background: #ddd;
+          //   border-bottom: 2px solid #ccc;
+        // }
+        //
+        // td {
+          //   padding-top: 0.5rem;
+          //   padding-bottom: 0.5rem;
+          //   color: #333;
+        // }
+
+        table tr:last-child td {
+          border-bottom: none;
+        }
+
+        tr:nth-child(even) td {
+          background: #eee;
+        }
+
+
       }
     }
-}
+  }
 
 div.VIATocMyPortfolioComponent {
 
