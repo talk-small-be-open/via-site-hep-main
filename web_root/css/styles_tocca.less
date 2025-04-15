@@ -2879,25 +2879,52 @@ div.VIATocMyProfileComponent, div.VIATocTeacherCockpit, div.VIATocMyPortfolioCom
 div.VIATocTeacherCockpit {
 
 
+  span.correctness {
+    .correctnessColor(@correctness, @color) {
+      &.correctness@{correctness} {
+        color: @color;
+        span.svg-icon.progress {
+          color: @color;
+        }
+      }
+    }
+
+    .correctnessColor(0, revert);
+    .correctnessColor(10, red);
+    .correctnessColor(20, red);
+    .correctnessColor(30, red);
+    .correctnessColor(40, orange);
+    .correctnessColor(50, orange);
+    .correctnessColor(60, orange);
+    .correctnessColor(70, orange);
+    .correctnessColor(80, green);
+    .correctnessColor(90, green);
+    .correctnessColor(100, green);
+  }
+
   div.legend {
     float: right;
-    // text-align: right;
+    text-align: right;
     font-size: 80%;
-  }
-
-  div.batch {
-    .topBuffer();
-
-    span.previous, span.next, span.page {
-      padding: 0 0.2rem;
+    span.progress, span.correctness {
+      margin: 0 2px;
     }
-    
   }
+
   
   div.tableNavigation {
     .topBuffer();
     // text-align: right;
     clear: both;
+    display: flex;
+    justify-content: start;
+    gap: 1em;
+    div.batch {
+      span.previous, span.next, span.page {
+        padding: 0 0.2rem;
+      }
+
+    }
   }
 
 		.invitationCode {
@@ -3082,27 +3109,6 @@ span.svg-icon.progress {
   color: #333;
 }
 
-span.correctness {
-  .correctnessColor(@correctness, @color) {
-    &.correctness@{correctness} {
-      span.svg-icon.progress {
-        color: @color;
-      }
-    }
-  }
-
-  .correctnessColor(0, revert);
-  .correctnessColor(10, red);
-  .correctnessColor(20, red);
-  .correctnessColor(30, red);
-  .correctnessColor(40, orange);
-  .correctnessColor(50, orange);
-  .correctnessColor(60, orange);
-  .correctnessColor(70, orange);
-  .correctnessColor(80, green);
-  .correctnessColor(90, green);
-  .correctnessColor(100, green);
-}
 
 
 
